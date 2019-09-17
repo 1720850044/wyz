@@ -1,0 +1,420 @@
+//@import 'newBase.less';
+.statisics{
+    &-menu{
+        .base-card;
+        float:left;width:360px;
+        box-shadow: @boxShadow;
+        .ivu-div{
+            
+            border-top-width:0px;border-right-width:0px;
+            p{
+                text-align: right;
+                margin-bottom: 10px;
+                font-size: 14px;
+                color:#3bceb6;
+                cursor: pointer;
+            }
+        }
+        .ivu-menu{
+            background:@white;
+        }
+        .ivu-menu-submenu{
+            background:@white;
+        }
+        .ivu-menu-vertical{
+            font-weight:lighter;
+            .ivu-menu-submenu-title{
+                padding:10px 24px;
+                background:#fdfdfd;
+                // border-top:1px solid @baseboard;
+                color:@black_2;
+                font-size:@fs14;
+                border-style:none;
+                border-width:0px;
+                .iconfonts{
+                    color:#9e9e9e;
+                    font-size: @fs20;
+                    width:25px;
+                    display:inline-block;
+                }
+            }
+            .ivu-menu-item{
+                padding:13px 50px;
+                color:@black_2;
+                &:hover{
+                    color:@base;
+                    background:@white;
+                }
+            }
+        }
+        .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu){
+            background:@base;
+            color:@white;
+            border-width:0px;
+        }
+        .ivu-menu-item-group{
+            // border-right:1px solid @baseboard;
+            .ivu-menu-item:nth-of-type(1){
+                border-top:1px solid @baseboard;
+            }
+        }
+    }
+    &-content{
+       margin-left:390px;
+       padding-bottom: 30px;
+       .statisInfo{
+        //    box-shadow:@boxShadow;
+        //    background:@white;
+        //    border-radius:@r4;
+        //    padding:@p20;
+           font-weight:lighter;
+           font-family:@ff;
+           .base-card;
+           height:138px;
+           .sIncome{
+                // float:left;width:30%;height:100%;
+                // 隐藏隐藏掉总质量评分调整的宽度
+                float:left;width:33%;height:100%;
+                
+                margin-bottom: 30px;
+                // border-right:1px dashed @line;
+           }
+           .sGrade{
+               width:17%;float:left;height:100%;text-align:center;margin-top:-5px;
+               .title{
+                   font-size:@fs14;margin-top:3px;
+               }
+               .ivu-rate-star{
+                   margin-right:1px;
+               }
+               .ivu-rate{
+                   font-size:12px;
+               }
+               .gradeText{
+                   margin-bottom:@p5;
+                   font-size:@fs14;
+                   span{
+                       font-size: @fs20;
+                       color:#fea329;
+                       margin-right:2px;
+                   }
+               }
+           }
+           .sDisbu{
+               margin-left:3%;
+           }
+           .sProje{
+                //  width:20%;
+                // 隐藏隐藏掉总质量评分调整的宽度
+                width: 30%;
+                .infoMent{
+                    text-align:center;
+                    span{
+                        font-size: @fs24;margin-right:@p5;
+                    }
+                    .project{
+                        color:@base;
+                    }
+                    .number{
+                        color:@blue;
+                    }
+                    p{
+                        font-size:@fs14;margin-top:@p5;
+                    }
+                }
+           }
+           .title{
+                font-size: @fs16;color:@black_2;margin-bottom:12px;
+           }
+           .infoMent{
+                float:left;width:50%;height:60px;display:inline-block;font-size:@fs14;color:@black_2;
+                .iconfonts{
+                    font-size: @fs24;
+                }
+                p{
+                    font-family:@ff;font-size: @fs20;
+                }
+           }
+           .sPayMent{
+            //    border-right:1px dashed @line;
+               padding-left:@p10;
+               .iconfonts{
+                   color:@base;margin-right:@p5;
+               }
+               p{
+                   color:@base;
+               }
+           }
+           .sPayAble{
+                padding-left:@p25;
+                .iconfonts{
+                    color:@blue;
+                }
+                p{
+                    color:@blue;
+                }
+           }
+           .outPaid{
+                .iconfonts{
+                    color:#ffb617;
+                }
+                p{
+                    color:#ffb617;
+                }
+           }
+           .forPaid{
+                .iconfonts{
+                    color:#ff7b7e;
+                }
+                p{
+                    color:#ff7b7e;
+                }
+            }
+       }
+    }
+
+    // statisEchart
+    .statisEchart{
+      //box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
+
+        .echartTitle{
+            font-weight:lighter;
+            height:40px;
+            font-size: @fs16;
+            color:@black_2;
+            display: flex;
+            justify-content: space-between;
+        }
+        margin-top:@p30;
+        .echartColumn{
+            
+          box-shadow: @boxShadow;
+            float:left;
+            background:@white;
+            border-radius:@r4;
+            padding:@p20;
+            position: relative;
+        }
+        // 中标率
+        .bidding{
+            // width:68%;
+            // 暂时隐藏掉质量走势与成员空闲走势
+            width: 100%;
+        }
+        // 收入走势
+        .earning{
+            // width:30%;
+            // margin-left:2%;
+            // 暂时隐藏掉质量走势与成员空闲走势
+            width:100%;
+            margin-top: 30px;
+        }
+        // 承接项目走势
+        .project{
+            margin-top:@p30;
+            // width:33%;
+            margin-right:2%;
+            // 暂时隐藏掉质量走势与成员空闲走势
+            width:100%;
+        }
+        // 质量走势
+        .quality{
+           &:extend(.statisics .statisEchart .project);
+           margin-right:0px;
+        }
+        // 成员空闲走势
+        .member{
+            &:extend(.statisics .statisEchart .quality);
+            width:30%;
+            margin-left:2%;
+        }
+    }
+}
+
+
+.itemBox{
+    background: #fff;
+    //border:1px solid red;
+    //border-radius: 4px;
+    //padding: 20px 20px;
+    //font-weight: lighter;
+
+    &-top-title{
+        font-size:16px;
+        color:#777777;
+        margin-bottom:15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+    &-CheckboxGroup{
+      text-align: center;
+      width: 100%;
+    }
+    &-top{
+
+      &-title{
+        //border:1px solid #17ceb1;
+        // font-size:16px;
+        // color: rgb(210,210,210);
+        // float: left;
+      }
+      &-more{
+        // float:right;
+        // cursor: pointer;
+        // .iconfonts{
+        //   color: rgb(210,210,210);
+        // }
+      }
+    }
+    &-chartBox{
+      width:100%;
+      height: 350px;
+      margin-bottom:20px;
+      //margin-bottom: 15px;
+      //overflow: hidden;
+    }
+    &-bigChartBox{
+        width:100%;
+        height: 350px;
+        margin-bottom:20px;
+     }
+    &-chars {
+      height: 200px;
+      clear: both;
+      display: flex;
+      .charSty {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        font-size: 18px;
+        font-weight: lighter;
+        p {
+          position: absolute;
+          top: -10px;
+          right: 26px;
+          padding: 2px 12px;
+          color: #fff;
+          border-radius: 3px;
+          font-size: 14px;
+          color: #fefefe;
+          //i{position: absolute;left: 0;bottom: 0;display: inline-block;width:0;height:0;overflow:hidden;border:7px solid transparent;border-right-color:#3bceb6;}
+        }
+        i {
+          font-size: 14px;
+          color: #b5b5b5;
+          margin-left: 2px;
+          font-style: normal
+        }
+        .numbersSty {
+          font-size: 14px;
+          color: #b5b5b5;
+          margin-top: 20px;
+          span {
+            font-size: 18px
+          }
+        }
+        .numbers {
+          i {
+            font-size: 18px;
+            color: #b5b5b5
+          }
+        }
+        .adopat {
+          position: absolute;
+          top: -10px;
+          border-radius: 3px;
+          padding: 1px 5px;
+          font-size: 13px;
+        }
+      }
+      .charsLeft {
+        p {
+          background: #3bceb6;
+        }
+        b {
+          color: #3bceb6;
+        }
+        .adopat {
+          border: 1px solid #3bceb6;
+          color: #3bceb6
+        }
+      }
+      .charsRight {
+        p {
+          background: @orange;
+        }
+        b {
+          color: @orange;
+        }
+        .numbers {
+          font-size: 13px;
+          color: #b5b5b5;
+          span {
+            color: @orange;
+            font-size: 18px
+          }
+        }
+        .adopat {
+          border: 1px solid @orange;
+          color: @orange
+        }
+      }
+    }
+
+     &-charsCenter {
+       clear: both;
+       height: 200px;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      .demo-Circle-custom {
+        span {
+          font-size: 18px;
+          color: @red;
+        }
+        i {
+          font-style: normal;
+          color: #b5b5b5
+        }
+        p {
+          font-size: 13px;
+          color: #d1d1d1;
+          margin-top: 2px
+        }
+      }
+      .charsBottom {
+        display: flex;
+        width: 100%;
+        text-align: center;
+        .charSty {
+          width: 50%;
+          p {
+            color: #b5b5b5;
+            font-size: 14px;
+            span {
+              font-size: 18px
+            }
+            i {
+              font-style: normal
+            }
+          }
+        }
+        .left {
+          span {
+            color: @red;
+          }
+        }
+        .right {
+          span {
+            color: #a2cffd;
+          }
+        }
+      }
+    }
+
+}

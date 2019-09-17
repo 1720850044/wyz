@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // var target = {};
+    // var handler = {};
+    // var proxy = new Proxy(target, handler);
+    // proxy.a = 'b';
+    // console.log(target)
+    // console.log(proxy)
+
+    const handler = {
+      set: function(obj, prop, value, receiver) {
+        obj[prop] = receiver;
+      }
+    };
+    const proxy = new Proxy({}, handler);
+    proxy.foo = 'bar';
+    console.log(proxy)
+</script>
+</body>
+</html>

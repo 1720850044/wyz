@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        const target = {
+            a: 1,
+            b: 2,
+            c: 3
+        };
+        const handler = {
+            get: function(target, name) {
+                return (name in target ? target[name] : 42);
+            },
+            set: function(target, prop, value,resiger) {
+                if (prop.length == 1 && prop >= 'a' && prop <= 'z') {
+                    target[prop] = value;
+                    console.log(target, prop, value,resiger);
+                    return true;
+                } else {
+                    throw new ReferenceError(prop + ' cannot be set');
+                    return false;
+                }
+            }
+        };
+    const proxy = new Proxy(target, handler);
+    proxy.a = 10;
+    proxy.b = 20;
+    console.log(proxy);
+</script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+.zxxScaleBox {
+  position: absolute;
+  left: 0;
+  top: 0;
+  _position: absolute;
+  z-index: 0;
+  overflow: hidden;
+  //–webkit-user-select: none;
+  //-moz-user-select: none;
+  //user-select: none;
+}
+
+.zxxScaleRuler_h, .zxxScaleRuler_v, .zxxRefLine_v, .zxxRefLine_h, .zxxRefDot_h, .zxxRefDot_v {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.zxxScaleRuler_h {
+  width: 100%;
+  height: 18px;
+  background: url(../images/ruler_h.png) repeat-x;
+}
+
+.zxxScaleRuler_v {
+  width: 18px;
+  height: 100%;
+  background: url(../images/ruler_v.png) repeat-y;
+}
+
+.zxxScaleRuler_v .n, .zxxScaleRuler_h .n {
+  position: absolute;
+  font: 10px/1 Arial, sans-serif;
+  color: #333;
+  cursor: default;
+}
+
+.zxxScaleRuler_v .n {
+  width: 8px;
+  left: 3px;
+  word-wrap: break-word;
+}
+
+.zxxScaleRuler_h .n {
+  top: 1px;
+}
+
+.zxxRefLine_v, .zxxRefLine_h, .zxxRefDot_h, .zxxRefDot_v {
+  z-index: 998;
+}
+
+.zxxRefLine_h {
+  width: 100%;
+  height: 3px;
+  background: url(../images/line_h.png) repeat-x left center;
+  cursor: url('../images/cur_move_h.cur'), move;
+}
+
+.zxxRefLine_v {
+  width: 3px;
+  height: 100%;
+  _height: 9999px;
+  background: url(../images/line_v.png) repeat-y center top;
+  cursor: url('../images/cur_move_v.cur'), move;
+}
+
+.zxxRefDot_h {
+  width: 100%;
+  height: 3px;
+  background: url(../images/line_dot.png) repeat-x left 1px;
+  cursor: url(../images/cur_move_h.cur), move;
+  top: -10px;
+}
+
+.zxxRefDot_v {
+  width: 3px;
+  height: 100%;
+  _height: 9999px;
+  background: url(../images/line_dot.png) repeat-y 1px top;
+  cursor: url(../images/cur_move_v.cur), move;
+  left: -10px;
+}
+
+.zxxRefCrtBg {
+  width: 228px;
+  height: 146px;
+  background: #fdfdfd;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 3px 1px #ddd;
+  -moz-box-shadow: 0 0 3px 1px #ddd;
+  box-shadow: 0 0 3px 1px #ddd;
+  position: absolute;
+  z-index: 1000;
+}
+
+.zxxRefCrtTit {
+  height: 30px;
+  -webkit-box-shadow: 0 1px 3px #ddd;
+  -moz-box-shadow: 0 1px 3px #ddd;
+  box-shadow: 0 1px 3px #ddd;
+  > .add-new-line {
+    color: @baseFont;
+    float: left;
+    margin: 5px 10px;
+    font-size: 13px;
+    font-weight: bold;
+  }
+}
+
+.zxxRefCrtClose {
+  width: 21px;
+  height: 21px;
+  margin: 4px 5px 0 0;
+  //background: url(../images/line_close.png) no-repeat;
+  float: right;
+  font-size: 25px;
+  color: @baseFont;
+  line-height: 20px;
+  &:hover {
+    color: #888;
+    //transform: rotate(360deg);
+    //transition: transform 0.3s;
+  }
+}
+
+.zxxRefCrtClose:hover {
+  background-position: 0 -21px;
+}
+
+.zxxRefCrtX {
+  padding: 18px 15px 0 20px;
+  font-size: 12px;
+  overflow: hidden;
+  _zoom: 1;
+}
+
+.zxxRefCrtLeft {
+  width: 100px;
+  //padding-top: 10px;
+  float: left;
+}
+
+.zxxRefCrtRight {
+  float: right;
+}
+
+.zxxRefCrtDir {
+  height: 18px;
+  //font-family: simsun;
+  overflow: hidden;
+  text-align: left;
+  margin-bottom: 10px;
+  > label {
+    margin-left: 3px;
+  }
+}
+
+.zxxRefCrtRadio {
+  vertical-align: -2px;
+}
+
+.zxxRefCrtPlace {
+  padding-top: 0;
+  text-align: left;
+  //font-family: arial;
+}
+
+.zxxRefCrtInput {
+  width: 45px;
+  height: 20px;
+  margin-right: 4px;
+  font-size: 12px;
+  outline: none;
+  padding: 0 3px;
+  color: @baseFont;
+  vertical-align: middle;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  &:focus {
+    border-color: @base;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+}
+
+.zxxRefCrtBtn {
+  display: block;
+  width: 80px;
+  height: 26px;
+  font-size: 12px;
+  border: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color: #fff;
+  &#zxxRefCrtSure {
+    background: @base;
+    margin-bottom: 23px;
+    &:hover {
+      background: @base_dark;
+    }
+  }
+  &#zxxRefCrtCancel {
+    background: #bfbfbf;
+    &:hover {
+      background: #aaa;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}

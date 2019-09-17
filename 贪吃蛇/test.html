@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vue生命周期学习</title>
+  <script src="https://cdn.bootcss.com/vue/2.4.2/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>{{message}}</h1>
+  </div>
+</body>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      message: 'Vue的生命周期'
+    },
+    beforeCreate: function() {
+      console.group('------beforeCreate创建前状态------');
+      console.log("%c%s", "color:red" , "el     : " + this.$el); //undefined
+      console.log("%c%s", "color:red","data   : " + this.$data); //undefined 
+      console.log("%c%s", "color:red","message: " + this.message) 
+    },
+    created: function() {
+      console.group('------created创建完毕状态------');
+      console.log("%c%s", "color:red","el     : " + this.$el); //undefined
+      console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化 
+      console.log("%c%s", "color:red","message: " + this.message); //已被初始化
+    },
+    beforeMount: function() {
+      console.group('------beforeMount挂载前状态------');
+      console.log("%c%s", "color:red","el     : " + (this.$el)); //已被初始化
+      console.log(this.$el);
+      console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化  
+      console.log("%c%s", "color:red","message: " + this.message); //已被初始化  
+    },
+    mounted: function() {
+      console.group('------mounted 挂载结束状态------');
+      console.log("%c%s", "color:red","el     : " + this.$el); //已被初始化
+      console.log(this.$el);    
+      console.log("%c%s", "color:red","data   : " + this.$data); //已被初始化
+      console.log("%c%s", "color:red","message: " + this.message); //已被初始化 
+    },
+    beforeUpdate: function () {
+      console.group('beforeUpdate 更新前状态===============》');
+      console.log("%c%s", "color:red","el     : " + this.$el);
+      console.log(this.$el);   
+      console.log("%c%s", "color:red","data   : " + this.$data); 
+      console.log("%c%s", "color:red","message: " + this.message); 
+    },
+    updated: function () {
+      console.group('updated 更新完成状态===============》');
+      console.log("%c%s", "color:red","el     : " + this.$el);
+      console.log(this.$el); 
+      console.log("%c%s", "color:red","data   : " + this.$data); 
+      console.log("%c%s", "color:red","message: " + this.message); 
+    },
+    beforeDestroy: function () {
+      console.group('beforeDestroy 销毁前状态===============》');
+      console.log("%c%s", "color:red","el     : " + this.$el);
+      console.log(this.$el);    
+      console.log("%c%s", "color:red","data   : " + this.$data); 
+      console.log("%c%s", "color:red","message: " + this.message); 
+    },
+    destroyed: function () {
+      console.group('destroyed 销毁完成状态===============》');//106.53.93.13 mstsc  Administrator
+      console.log("%c%s", "color:red","el     : " + this.$el);
+      console.log(this.$el);  
+      console.log("%c%s", "color:red","data   : " + this.$data); 
+      console.log("%c%s", "color:red","message: " + this.message)
+    }
+  })
+
+//   function F1(){
+//       this.age = "f1";
+//     //   return {}
+//   }
+//   function F2(){
+
+//   }
+//   console.log(new F1().age);
+//   console.log(F1.name);
+// var a =10;
+// (function a(){
+//     console.log(a);
+//     var a = b = 100;
+//     console.log(a);
+// })()
+// console.log(a+b);
+// function test(){
+//     var obj = {};
+//     [].reduce.call('asfsdhvui3u2498rfrvh 93c  293ur0jvdf', (res, cur) => {
+//         res[cur] = res[cur] || 0;
+//         res[cur] ++;
+//         obj = res;
+//         return res;
+//     }, {})
+//     return obj;
+// }
+// console.log(test())
+// function test(){
+//     [].forEach.call('asfsdhvui3u2498rfrvh 93c  293ur0jvdf', (res, cur) => {
+//         console.log(res);
+//     })
+// }
+// test();
+// console.log([].indexOf.call('abcd'))
+// console.log({}.toString())
+// console.log((function(a,b){}).length)
+
+// function flattern(arr){
+//     return arr.reduce((res,cur) => 
+//         res.concat(Array.isArray(cur) ? flattern(cur) : [cur])
+//     ,[]);
+// }
+// console.log(flattern([1,2,3,[4,5,6,[7,8,9]]]))
+
+function foo() {
+	console.log(this.a)
+}
+var a = 1
+foo()
+
+var obj = {
+	a: 2,
+	foo: foo
+}
+obj.foo()
+</script>
+</html>

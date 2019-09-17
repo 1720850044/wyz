@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <title>Output Management</title>
+    <script src="dist/print.bundle.js"></script>
+</head>
+<body>
+    <img src="./src/1.jpg"/>
+    <script src="dist/app.bundle.js"></script>
+    <script>
+        function Point(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+        Point.prototype = {
+            to: function(){
+
+            },
+            from: function(){
+
+            }
+        }
+        var p = new Point(2,3);
+        var p = new Point(3,2);
+        //console.log(p);
+        // console.log(p.__proto__ === p1.__proto__)
+        // console.log(p1.__proto__)
+        function a(){
+            console.log(1)
+        }
+        var time1 = (cb,time) => {
+            (function loop(){
+                setTimeout(loop,time)
+                cb();
+            })();
+        }
+        //time1(a,200);
+        var time2 = (cb,time) => {
+            cb();
+            setInterval(cb,time);
+        }
+        //time2(a,200)
+    </script>
+</body>
+</html>

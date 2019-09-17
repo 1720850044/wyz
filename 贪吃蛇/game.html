@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <style>
+       *{ margin:0; padding:0; font-family:"Microsoft yahei",serif;}
+       li{ list-style-type: none;}
+       body{
+           background: #000;
+       }
+       #wrap{
+           width: 300px;
+           height: 500px;
+           margin: 50px auto;
+           border: 10px solid #fff;
+       }
+       #box{
+           position: relative;
+           width: 300px;
+           height: 500px;
+       }
+       #box h1{
+           font-size: 24px;
+           color: #fff;
+           text-align: center;
+           padding-top: 50px;
+       }
+       #box .diff{
+           width: 150px;
+           height: 30px;
+           background: #fff;
+           line-height: 30px;
+           text-align: center;
+           font-size: 14px;
+           margin: 60px auto;
+           transition: .2s;
+           cursor: pointer;
+       }
+       #box .diff.bt{
+           background: pink;
+           color: #F00;
+           font-weight: bold;
+       }
+       #box .diff:hover{
+           background: pink;
+           color: #FFF;
+       }
+       #box .plane,#box .biu,#box .enemy,#box .boom{
+           position: absolute;
+       }
+       #box .score{
+           position: absolute;
+           top: 10px;
+           left: 10px;
+           font-size: 14px;
+           color: #fff;
+           font-weight: bold;
+           text-decoration: underline;
+           z-index: 9999;
+       }
+    </style>
+</head>
+
+<body>
+<div id="wrap" >
+    <div id="box"></div>
+</div>
+<div style="display: none;">
+    <img src="img/plane.png" alt="">
+    <img src="img/boom.png" alt="">
+    <img src="img/enemy.png" alt="">
+    <img src="img/bullet.png" alt="">
+    <img src="img/boom2.png" alt="">
+</div>
+<script src="js/utils.js"></script>
+
+<script>
+window.onload = function(){
+    init();
+}
+function init(){
+    initDatas();
+}
+
+var initDatas = (function (){
+    var oBox = document.getElementById("box");
+    function getDatas(){                       
+        initGame();
+    } 
+    function initGame(){
+        var oH1 = document.createElement("h1"),
+            oP, 
+            e = e || window.event, 
+            frag = document.createDocumentFragment(),                  
+            arrTxt = ["简单难度" , "中等难度" , "困难难度" , "变态附体"];
+        oH1.innerHTML = "飞机大战v5.0";
+        oBox.appendChild( oH1 );
+        for (var i = 0; i < 4; i++) {
+             oP = document.createElement("p");
+             oP.className = i===3?"diff bt":"diff";
+             oP.innerHTML = arrTxt[i]; 
+             oP.i = i; 
+             (function (j){
+                addEvent(oP,'click',function(e){            
+                    start(j,e);
+                });  
+             })(i);
+                                
+             frag.appendChild( oP );                         
+        }
+        oBox.appendChild( frag );
+    } 
+
+    function  start(index,e){
+        oBox.innerHTML = "";
+        var biuTime = [200 , 300 , 350 , 13];
+        plane(e,biuTime[index]);
+    } 
+    function plane(e,bPTime){
+        //生成飞机图片
+        var oPlane = new Image();
+        oPlane.src = "img/plane.png";
+        oPlane.width = 60;
+        oPlane.height = 36;
+        oPlane.className = 'plane';
+        oPlane.style.left = pagePos(e).X - getElemDocPostion(oBox).left - oPlane.width/2 + 'px';
+        oPlane.style.top = pagePos(e).Y - getElemDocPostion(oBox).top - oPlane.width/2 + 'px';
+        oBox.appendChild(oPlane);
+        //飞机位置的边界
+        var leftMax,leftMin,topMax,topMin;
+        leftMin = -oPlane.width/2;
+        leftMax = getStyles(oBox,'width') - oPlane.width/2;
+        topMin = 0;
+        topMax = getStyles(oBox,'height') - oPlane.height/2;
+        //跟随鼠标移动 
+             
+        addEvent(document,'mousemove',function(e){       
+            var left = pagePos(e).X - getElemDocPostion(oBox).left - oPlane.width/2,
+                top = pagePos(e).Y - getElemDocPostion(oBox).top - oPlane.width/2;           
+            left = Math.max(left , leftMin);
+            left = Math.min(left , leftMax);
+            top = Math.max(top , topMin);
+            top = Math.min(top , topMax);           
+            oPlane.style.left = left + 'px';
+            oPlane.style.top = top + 'px';
+        });
+        //我军子弹
+        oPlane.bTimer = setInterval(function () {
+            var oBiu = new Image();
+            oBiu.src = "img/bullet.png";
+            oBiu.width = 6;
+            oBiu.height = 22;
+            oBiu.className = "biu";
+            oBiu.style.left = getStyles(oPlane,'left') + oPlane.width/2 - oBiu.width/2 + 'px';
+            oBiu.style.top = getStyles(oPlane,'top') - oBiu.height + 17 + 'px';
+            //console.log(oPlane.offsetLeft);
+            //console.log(getStyles(oPlane,'left'));
+            oBox.appendChild(oBiu);
+            function m(){
+                oBiu.style.top = getStyles(oBiu,'top') - 17 + 'px';
+                if ( getStyles(oBiu,'top') <= -oBiu.height/2 ){
+                    oBox.removeChild(oBiu);
+                }else{
+                    oBiu.timer = requestAnimationFrame(m);
+                }
+            }
+            requestAnimationFrame(m);
+        },bPTime);
+        
+    }  
+    
+    //生成敌军
+    function enemy(index , oPlane){
+        var eTime = [500,400,200,50], //生成的间隔
+            boxW = getStyles(oBox,'width'),
+            boxH = getStyles(oBox,'height');
+    }
+
+    //生成爆炸图片
+    function createBoom( obj , i ) {
+        var oEnemyBoom = new Image();
+        oEnemyBoom.src = "img/boom"+i+".png";
+        oEnemyBoom.width = obj.width;
+        oEnemyBoom.height = obj.height;
+        oEnemyBoom.className = "boom";
+        oEnemyBoom.style.top = obj.offsetTop + 'px';
+        oEnemyBoom.style.left = obj.offsetLeft + 'px';
+        oBox.appendChild(oEnemyBoom);
+        setTimeout(function () {
+            oBox.removeChild(oEnemyBoom);
+        },i?1500:500);
+    }
+
+    //碰撞检测
+    function coll(obj1 , obj2){
+        var T1 = obj1.offsetTop,
+            B1 = T1 + obj1.offsetHeight,
+            L1 = obj1.offsetLeft,
+            R1 = L1 + obj1.offsetWidth;
+
+        var T2 = obj2.offsetTop,
+            B2 = T2 + obj2.offsetHeight,
+            L2 = obj2.offsetLeft,
+            R2 = L2 + obj2.offsetWidth;
+
+        return !(R1 < L2 || B1 < T2 || L1 > R2 || T1 > B2);
+
+    }
+
+    return function(){
+        getDatas();       
+    }
+})();
+</script>
+
+</body>
+</html>

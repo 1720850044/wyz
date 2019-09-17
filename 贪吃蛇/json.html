@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .wrap{
+            width: 600px;
+            height:100%;
+            margin: 50px auto;
+        }
+        .wrap p{
+            text-align: center;
+            margin: 15px 0 0 0;
+        }
+        .wrap .wrap-img{            
+            width: 850px;
+            margin-left: -142px;
+        }
+        .wrap .wrap-img ul li{
+            position: relative;
+            float: left;
+            margin: 20px 0;
+            padding: 10px;
+            
+        }
+        .wrap .wrap-img ul li .cover{  
+            opacity: 0;    
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: url("img/new-bg.png");
+            border-radius: 50%;
+            top: 10px;
+            left: 10px;  
+                     
+        } 
+        .wrap .wrap-img ul li .cover h5{
+            color: #fff;
+            font-size: 12px;           
+            text-align: center;
+            padding: 100px 0 0 0;
+        }
+        .wrap .wrap-img ul li .cover p{
+            color: #fff;
+            font-size: 12px;           
+            text-align: center;
+            margin-top: 4px;
+        }
+        /* .wrap .wrap-img ul li:hover .cover{
+            opacity:1;                        
+            transition: 3s;
+        }     */
+        .wrap .wrap-img ul li .cover.show{
+            opacity:1;                        
+            transition: 3s; 
+        }
+        .wrap .wrap-img ul li a{
+            display: block;
+        }
+        .wrap .wrap-img ul li img{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+<div class="wrap" >
+    <div class="title">
+        <h1> ——踏实勤奋努力 注定技术到手—— </h1>
+        <p>中大型互联网企业需要真正有技术的人才</p>
+    </div>
+    <div class="wrap-img">
+        <ul></ul>                   
+    </div>
+</div>
+<script src="js/utils.js"></script>
+
+<script>
+window.onload = function(){
+    init();
+}
+function init(){
+    initDatas();
+}
+var initDatas = (function (){
+    var data = '[{"id":"1","career":"\u524d\u7aef\u5de5\u7a0b\u5e08","city":"\u5317\u4eac","salary":"15","img":"1.jpg"},{"id":"2","career":"\u524d\u7aef\u5de5\u7a0b\u5e08","city":"\u5e7f\u5dde","salary":"11","img":"2.jpg"},{"id":"3","career":"\u524d\u7aef\u5de5\u7a0b\u5e08","city":"\u4e0a\u6d77","salary":"10","img":"3.jpg"},{"id":"4","career":"\u524d\u7aef\u5de5\u7a0b\u5e08","city":"\u6210\u90fd","salary":"9","img":"4.jpg"},{"id":"5","career":"\u540e\u7aef\u5de5\u7a0b\u5e08","city":"\u5317\u4eac","salary":"11","img":"5.jpg"},{"id":"6","career":"\u524d\u7aef\u5de5\u7a0b\u5e08","city":"\u5317\u4eac","salary":"13","img":"6.jpg"},{"id":"7","career":"\u524d\u7aef\u5de5\u7a0b\u5e08","city":"\u6df1\u5733","salary":"12","img":"7.jpg"},{"id":"8","career":"\u524d\u7aef\u5de5\u7a0b\u5e08","city":"\u4e0a\u6d77","salary":"10","img":"8.jpg"},{"id":"9","career":"\u540e\u7aef\u5de5\u7a0b\u5e08","city":"\u6210\u90fd","salary":"10","img":"9.jpg"},{"id":"10","career":"\u524d\u7aef\u5de5\u7a0b\u5e08","city":"\u5317\u4eac","salary":"18","img":"10.jpg"}]',
+        curIdx = -1,
+        json = JSON.parse(data),            
+        wrapImg = document.getElementsByClassName('wrap-img')[0],
+        ul = wrapImg.getElementsByTagName("ul")[0],           
+        str = "";             
+
+    function getDatas(){                       
+        creatLis();
+        addEvent(ul,'mouseover',function(){
+            addEvent(this,'mousemove',slide);      
+        });
+        addEvent(ul,'mouseout',function(){
+            removeEvent(this,'mousemove',slide);
+        });
+    }  
+    function creatLis(){       
+        for(var keys in json){                 
+            str += '<li>'+
+                '<a href="javascript:;"><img src="img/'+json[keys].img+'" /></a>'+
+                '<div class="cover ">'+
+                '<h5>'+json[keys].career+'('+json[keys].city+')</h5>'+
+                '<p>'+json[keys].salary+'k</p></div></li>';
+        }              
+        ul.innerHTML = str;
+    }  
+    function slide(e){       
+        var e = e || window.event,           
+            tar = e.target || e.srcElement,
+            list = document.getElementsByTagName("li"),
+            listdiv = document.getElementsByClassName("cover"),
+            oParent = findParent(tar),
+            thisIdx = Array.prototype.indexOf.call(list,oParent),
+            len = list.length,
+            item;
+        if(curIdx !== thisIdx){
+            curIdx = thisIdx;
+            for(var i = 0;i<len;i++){               
+                item = listdiv[i];
+                item.className = "cover";                            
+            }          
+            listdiv[curIdx].className += " show";                    
+        }
+        
+    }
+
+    function findParent(target){
+        while(target.tagName.toLowerCase() != "li"){
+            target = target.parentNode;
+        }
+        return target;
+    }
+    return function(){
+        getDatas();
+    }
+})();
+</script>
+
+</body>
+</html>

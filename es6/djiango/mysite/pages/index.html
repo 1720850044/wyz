@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>这里是首页</h1>
+    <script>
+        function test(x, y, z) {
+          console.log(test.length); //实际参数
+          console.log(arguments.length); // 形参
+          console.log(arguments.callee === test);  // arguments.callee
+          console.log(arguments[2]);
+        }
+        //test(10, 20);
+        var x = 30;
+        function test(){
+            alert(x);
+            var x = 10;
+            alert(x);
+            x = 20;
+            function x() {};
+            alert(x);
+        }
+        //test();
+        function test() {
+            var x = 10;
+            var y = 20;
+            return function () {
+                alert([x, y]);
+            };
+        }
+        var x = 30;
+        var y = 40;
+        var temp = test();
+        //temp();
+
+        function Foo() {
+            getName = function () { alert (1); };
+            return this;
+        }
+        Foo.getName = function () { alert (2);};
+        Foo.prototype.getName = function () { alert (3);};
+        var getName = function () { alert (4);};
+        function getName() { alert (5);}
+
+        // Foo.getName();  // 2
+        // getName();  // 4
+        // Foo().getName();  // 1
+        // getName();  // 1
+        // new Foo.getName();  // 2
+        // new Foo().getName();  // 3
+        // new new Foo().getName();  // 3
+
+        function Foo() {
+            this.getName = function() {
+                console.log(3);
+                return {
+                    getName: getName//这个就是第六问中涉及的构造函数的返回值问题
+                }
+            };//这个就是第六问中涉及到的，JS构造函数公有方法和原型链方法的优先级
+            getName = function() {
+                console.log(1);
+            };
+            return this
+        }
+        Foo.getName = function() {
+            console.log(2);
+        };
+        Foo.prototype.getName = function() {
+            console.log(6);
+        };
+        var getName = function() {
+            console.log(4);
+        };
+        function getName() {
+            console.log(5);
+        } //答案：
+        Foo.getName(); //2
+        getName(); //4
+        console.log(Foo())
+        Foo().getName(); //1
+        getName(); //1
+        new Foo.getName(); //2
+        new Foo().getName(); //3
+                        //多了一问
+        new Foo().getName().getName(); //3 1
+        new new Foo().getName(); //3
+    </script>
+</body>
+</html>

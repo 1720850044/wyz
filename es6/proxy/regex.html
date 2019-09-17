@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // var str = '100';
+        // var reg = /(?=(\B)(\d{3})+$)/g;
+        // var str1 = str.replace(reg,',');
+        // console.log(str1);
+
+        var str = "DEADBEEF CAFE";
+        var str1 = "";
+        var arr = str.match(/./g);
+        var arr1 = [];
+        //var str1 = str.match(/(\w){4,}/g);
+        //console.log(str1[0],str1[1])
+        var i = 0;
+        if(/[ ]/g.test(str)){
+            while(i< arr.length){
+                str1 += arr[i];
+                if(arr[i] == " "){
+                    console.log(str1)
+                }else{
+                    console.log(2222)
+                }
+                i++;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Teamwork</title>
+    <link rel=stylesheet href="platform.css" type="text/css">
+    <link rel=stylesheet href="libs/dateField/jquery.dateField.css" type="text/css">
+    <link rel=stylesheet href="gantt.css" type="text/css">
+    <link rel=stylesheet href="print.css" type="text/css" media="print">
+    <!-- 依赖 -->
+      <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+      <script src="http://libs.baidu.com/jqueryui/1.8.22/jquery-ui.min.js "></script>
+      <script src="libs/jquery.livequery.min.js"></script>
+      <script src="libs/jquery.timers.js"></script>
+      <script src="libs/platform.js"></script>
+      <script src="libs/date.js"></script>
+      <script src="libs/i18nJs.js"></script>
+      <script src="libs/dateField/jquery.dateField.js"></script>
+      <script src="libs/JST/jquery.JST.js"></script>
+      <link rel="stylesheet" type="text/css" href="libs/jquery.svg.css">
+      <script type="text/javascript" src="libs/jquery.svg.min.js"></script>
+      <script type="text/javascript" src="libs/jquery.svgdom.1.8.js"></script><!--In case of jquery 1.8-->
+    <!-- 具体逻辑 -->
+      <script src="ganttUtilities.js"></script>
+      <script src="ganttTask.js"></script>
+      <script src="ganttDrawerSVG.js"></script>
+      <script src="ganttGridEditor.js"></script>
+      <script src="ganttMaster.js"></script>
+    <script>
+      var gantt_projectID=sessionStorage.projectID;
+      var userTaskID;
+      var apiDomain = nowDomain.indexOf('www.banbooyun.com')  != -1 ? 'https://www.banbooyun.com' :'https://dev.banbooyun.com';
+      var ganttURL=apiDomain+"/index.php?r=";
+      var taskURL=ganttURL+"task/task/update";
+    </script>
+    <script src="ganttArr.js"></script>
+    <style type="text/css">
+          body{
+              SCROLLBAR-FACE-COLOR :rgb(10,236,209) ;
+              SCROLLBAR-HIGHLIGHT-COLOR :rgb(23,255,155) ;
+              SCROLLBAR-SHADOW-COLOR :rgb(255,116,23) ;
+              SCROLLBAR-3DLIGHT-COLOR :rgb(66,93,127) ;
+              SCROLLBAR-ARROW-COLOR :rgb(93,232,255) ;
+              SCROLLBAR-TRACK-COLOR :rgb(255,70,130) ;
+              SCROLLBAR-DARKSHADOW-COLOR :rgb(10,0,209) ;
+              SCROLLBAR-BASE-COLOR :rgb(66,93,128)
+          }
+    </style>
+  </head>
+  <body style="background-color: #fff;">
+    <!-- 甘特图主视图空间 -->
+    <div id="workSpace" style="padding:0px; 
+                               overflow-y:auto; 
+                               overflow-x:hidden;
+                               border-top:1px solid #efefef;
+                               position:relative;">
+    </div>
+    <!-- 无数据显示内容 -->
+    <div id="taZone" style="display:none;" class="noprint">
+      <textarea rows="8" cols="150" id="ta"></textarea>
+    </div>
+    <!-- 编辑模板 -->
+    <div id="gantEditorTemplates" style="display:none;">
+      <div class="__template__" type="GANTBUTTONS"><!--
+      <div class="ganttButtonBar noprint">
+                <div class="buttons">
+                    <button onclick="$('#workSpace').trigger('indentCurrentTask.gantt');" class="button textual" title="缩进"><span class="teamworkIcon">.</span></button>
+                    <button onclick="$('#workSpace').trigger('outdentCurrentTask.gantt');" class="button textual" title="取消缩进"><span class="teamworkIcon">:</span></button>
+                    <button onclick="$('#workSpace').trigger('moveUpCurrentTask.gantt');" class="button textual" title="升级"><span class="teamworkIcon">k</span></button>
+                    <button onclick="$('#workSpace').trigger('moveDownCurrentTask.gantt');" class="button textual" title="降升"><span class="teamworkIcon">j</span></button>
+                    <button onclick="$('#workSpace').trigger('deleteCurrentTask.gantt');" class="button textual" title="删除"><span class="teamworkIcon">&cent;</span></button>
+                </div>
+                <div class="headTool-right">
+                    <span>刻度</span>
+                    <span>
+                    <select class="selectDate">
+                        <option value="getDay">天</option>
+                        <option value="getWeek">周</option>
+                        <option value="getMoon">月</option>
+                    </select>
+                    </span>
+                </div>
+                <div class="clear"></div>
+      </div>
+      --></div>
+
+        <div class="__template__" type="TASKSEDITHEAD"><!--
+      <table class="gdfTable" cellspacing="0" cellpadding="0">
+        <thead>
+        <tr style="height:40px">
+          <th class="gdfColHeader gdfResizable" style="width:180px;">任务名称</th>
+          <th class="gdfColHeader gdfResizable" style="width:100px;">参与人</th>
+          <th class="gdfColHeader gdfResizable" style="">类型</th>
+        </tr>
+        </thead>
+      </table>
+      --></div>
+
+        <!-- 废弃
+          <td class="gdfCell proChild"><input type="text" name="projectChild" value="(#=obj.projectChild#)">
+            <td class="gdfCell"><input type="text" name="depends" value="(#=obj.depends#)" (#=obj.hasExternalDep?"readonly":""#)></td>
+        -->
+        <div class="__template__" type="TASKROW"><!--
+        <tr taskId="(#=obj.id#)" class="taskEditRow" level="(#=level#)">
+            <td class="gdfCell indentCell" style="padding-left:(#=obj.level*10#)px;">
+              <div class="(#=obj.isParent()?'exp-controller expcoll exp':'exp-controller'#)" align="center"></div>
+              <input type="text" name="name" value="(#=obj.name#)">
+            </td>
+        </td>
+        <td class="gdfCell gdfper"><input type="text" ></td>
+        <td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)"></td>
+        
+
+      </tr>
+      --></div>
+
+      <div class="__template__" type="TASKEMPTYROW"><!--
+      <tr class="taskEditRow emptyRow" >
+        <td class="gdfCell"></td>
+        <td class="gdfCell"></td>
+        <td class="gdfCell"></td>
+      </tr>
+      --></div>
+
+      <div class="__template__" type="TASKBAR"><!--
+      <div class="taskBox taskBoxDiv" taskId="(#=obj.id#)" >
+        <div class="layout (#=obj.hasExternalDep?'extDep':''#)">
+          <div class="taskStatus" status="(#=obj.status#)"></div>
+          <div class="taskProgress" style="width:(#=obj.progress>100?100:obj.progress#)%; background-color:(#=obj.progress>100?'red':'rgb(153,255,51);'#);"></div>
+          <div class="milestone (#=obj.startIsMilestone?'active':''#)" ></div>
+
+          <div class="taskLabel"></div>
+          <div class="milestone end (#=obj.endIsMilestone?'active':''#)" ></div>
+        </div>
+      </div>
+      --></div>
+
+      <div class="__template__" type="CHANGE_STATUS">
+        <div class="taskStatusBox">
+          <div class="taskStatus cvcColorSquare" status="STATUS_ACTIVE" title="active"></div>
+          <div class="taskStatus cvcColorSquare" status="STATUS_DONE" title="completed"></div>
+          <div class="taskStatus cvcColorSquare" status="STATUS_SUSPENDED" title="suspended"></div>
+          <div class="taskStatus cvcColorSquare" status="STATUS_FAILED" title="failed"></div>
+        </div>
+        <!--<div class="taskStatusBox">
+          <div class="taskStatus cvcColorSquare" status="STATUS_ACTIVE" title="active"></div>
+          <div class="taskStatus cvcColorSquare" status="STATUS_DONE" title="completed"></div>
+          <div class="taskStatus cvcColorSquare" status="STATUS_FAILED" title="failed"></div>
+          <div class="taskStatus cvcColorSquare" status="STATUS_SUSPENDED" title="suspended"></div>
+          <div class="taskStatus cvcColorSquare" status="STATUS_UNDEFINED" title="undefined"></div>
+        </div>-->
+    </div>
+
+
+      <div class="__template__" type="ASSIGNMENT_ROW"><!--
+      <tr taskId="(#=obj.task.id#)" assigId="(#=obj.assig.id#)" class="assigEditRow" >
+        <td ><select name="resourceId"  class="formElements" (#=obj.assig.id.indexOf("tmp_")==0?"":"disabled"#) ></select></td>
+        <td ><select type="select" name="roleId"  class="formElements"></select></td>
+        <td ><input type="text" name="effort" value="(#=getMillisInHoursMinutes(obj.assig.effort)#)" size="5" class="formElements"></td>
+        <td align="center"><span class="teamworkIcon delAssig" style="cursor: pointer">d</span></td>
+      </tr>
+      --></div>
+
+
+      <div class="__template__" type="RESOURCE_EDITOR"><!--
+      <div class="resourceEditor" style="padding: 5px;">
+
+        <h2>Project team</h2>
+        <table  cellspacing="1" cellpadding="0" width="100%" id="resourcesTable">
+          <tr>
+            <th style="width:100px;">name</th>
+            <th style="width:30px;" id="addResource"><span class="teamworkIcon" style="cursor: pointer">+</span></th>
+          </tr>
+        </table>
+
+        <div style="text-align: right; padding-top: 20px"><button id="resSaveButton" class="button big">save</button></div>
+      </div>
+      --></div>
+
+
+      <div class="__template__" type="RESOURCE_ROW"><!--
+      <tr resId="(#=obj.id#)" class="resRow" >
+        <td ><input type="text" name="name" value="(#=obj.name#)" style="width:100%;" class="formElements"></td>
+        <td align="center"><span class="teamworkIcon delRes" style="cursor: pointer">d</span></td>
+      </tr>
+      --></div>
+
+
+    </div>
+    <!-- 代码 -->
+    <script type="text/javascript">
+      var gantt;  //this is the hugly but very friendly global var for the gantt editor
+      $(function() {
+        //load templates
+        $("#ganttemplates").loadTemplates();
+        // here starts gantt initialization
+        gantt = new GanttMaster();
+        var workSpace = $("#workSpace");
+            workSpace.css({width:$(window).width(),height:$(window).height()-23});
+        gantt.init(workSpace);
+
+        $(".ganttButtonBar h1").html("");
+        $(".ganttButtonBar div").addClass('buttons');
+        loadI18n();
+        //  loadGanttFromServer();
+        //fill default Teamwork roles if any
+        if (!gantt.roles || gantt.roles.length == 0) {
+          setRoles();
+        }
+        //fill default Resources roles if any
+        if (!gantt.resources || gantt.resources.length == 0) {
+          setResource();
+        }
+        //自适应大小
+        $(window).resize(function(){
+          workSpace.css({width:$(window).width(),height:$(window).height()-23});
+          workSpace.trigger("resize.gantt");
+        })
+      });
+      //--------------------  Create some demo data -----------------------------
+      function setRoles() {
+      }
+
+      function setResource() {
+        var res = [];
+        for (var i = 1; i <= 10; i++) {
+          res.push({id:"tmp_" + i,name:"Resource " + i});
+        }
+        gantt.resources = res;
+      }
+
+      function loadI18n() {
+        GanttMaster.messages = {
+        };
+      }
+
+      Storage.prototype.setObject = function(key, value) {
+        this.setItem(key, JSON.stringify(value));
+      };
+      Storage.prototype.getObject = function(key) {
+        return this.getItem(key) && JSON.parse(this.getItem(key));
+      };
+
+      function loadFromLocalStorage() {
+        var ret;
+        if (localStorage) {
+          if (localStorage.getObject("teamworkGantDemo")) {
+            ret = localStorage.getObject("teamworkGantDemo");
+          }
+        } else {
+          $("#taZone").show();
+        }
+        if (!ret || !ret.tasks || ret.tasks.length == 0){
+          ret = JSON.parse($("#ta").val());
+          for (var i=0;i<ret.tasks.length;i++)
+          {
+            ret.tasks[i].start=parseInt(ret.tasks[i].start)*1000;
+            ret.tasks[i].end=parseInt(ret.tasks[i].end)*1000;
+          }
+        }
+        gantt.loadProject(ret);
+        gantt.checkpoint(); //empty the undo stack
+      }
+      
+      function loadGanttFromServer(taskId, callback) {
+        loadFromLocalStorage();
+      }
+
+    </script>
+    <!-- 任务浮动标签 -->
+    <div class="openShow">
+        <dl>
+            <dt>
+                <div>
+                    <div class="li active">上色<br /><em>2018/1/15<br/>15:00</em><br/><i>|</i></div>
+                    <div class="li active">线条<br /><em>2018/1/15<br/>15:00</em><br/><i>|</i></div>
+                    <div class="li action">线条<br /><em>&nbsp;<br/>&nbsp;</em><br/><i>|</i></div>
+                    <div class="li">建模<br /><em>&nbsp;<br/>&nbsp;</em><br/><i>|</i></div>
+                    <div class="li">完成<br /><em>&nbsp;<br/>&nbsp;</em><br/><i>|</i></div>
+                    <div class="clear"></div>
+                </div>
+                <p><span style="width:20%">&nbsp;</span></p>
+            </dt>
+            <div>
+                <dd class="cue">超时<br/><b>40h</b></dd>
+                <dd>
+                    <ul>
+                        <li>任务开始<br /><span>2018/1/12<br />15:00</span></li>
+                        <li class="li-c">26工作日<br/><span>剩余60h</span></li>
+                        <li class="li-r">预计结束<br /><span>2018/1/12<br />15:00</span></li>
+                    </ul>
+                </dd>
+                <div class="clear"></div>
+            </div>
+        </dl>
+    </div>
+    <!-- 任务详情弹窗 -->
+    <div class="openDetails">
+      <span>X</span>
+      <script>
+        function userTaskFun(userTaskID){
+            userTaskID=userTaskID;
+    //        alert(userTaskID);
+        }
+      </script>
+    </div>
+    <!-- 任务人员浮动标签 -->
+    <div class="addpeople">
+        <input type="text" placeholder="参与人的姓名" class="peopleInt">
+        <dl>
+            <dt>
+                <a href="javascript:;" class="show">全部成员</a>
+                <a href="javascript:;">3D模型</a>
+                <a href="javascript:;">地编组</a>
+                <a href="javascript:;">次世代</a>
+            </dt>
+            <dd style="display:block">
+                <label><input type="radio" value="张三" name="addpeop"/>张三</label>
+                <label><input type="radio" value="张四" name="addpeop"/>张四</label>
+                <label><input type="radio" value="张五" name="addpeop"/>张五</label>
+                <label><input type="radio" value="张六" name="addpeop"/>张六</label>
+                <label><input type="radio" value="张七" name="addpeop"/>张七</label>
+            </dd>
+            <dd>
+                <label><input type="radio" value="张四" name="addpeop"/>张四</label>
+                <label><input type="radio" value="张五" name="addpeop"/>张五</label>
+            </dd>
+            <dd>
+                <label><input type="radio" value="张六" name="addpeop"/>张六</label>
+            </dd>
+            <dd>
+                <label><input type="radio" value="张七" name="addpeop"/>张七</label>
+            </dd>
+            <div class="clear"></div>
+        </dl>
+    </div>
+    <!-- 选择子项目浮动标签 -->
+    <div class="selectStyle">
+        <select></select>
+    </div>
+  </body>
+</html>

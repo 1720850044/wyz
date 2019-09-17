@@ -1,0 +1,572 @@
+/* -------------------------------------- GRIDIFY -----------------------------------*/
+.gdfTable {
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%!important;
+}
+
+.gdfTable td, .gdfTable th {
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+  font-size: 13px;
+  text-align: left;
+  padding: 0px 0px 0px 10px;
+}
+.gdfTable tr{
+  height: 40px;
+  line-height: 40px;
+}
+.gdfCell {
+  overflow: hidden;
+  font-size: 12px!important;
+  /*padding:4px 2px*/
+}
+
+.gdfCell.noClip{
+  overflow: visible;
+}
+
+.gdfColHeader {
+  min-width: 60px;
+  height: 30px;
+}
+
+.gdfCell, .gdfColHeader {
+  border-bottom: 1px solid #eee;
+}
+
+
+.gdfCellInput {
+  border: 0 none;
+  font-size: 12px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background-color: #d4fbe8;
+}
+
+.gdfCellWrap {
+  border: 0 none;
+  font-size: 12px;
+  height: 17px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow: hidden;
+  background-color: #ffcccc;
+}
+
+.gdfHResizing {
+  cursor: w-resize;
+}
+
+
+/* -------------------------------------- SPLITTER -----------------------------------*/
+.splitterContainer {
+  width: 100%;
+  height: 100%;
+}
+.splitBox1{
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.splitBox2{
+  overflow-x: scroll;
+  overflow-y: auto;
+}
+
+.splitElement {
+  outline-style: none;
+  position: absolute;
+  height: 100%;
+}
+
+.vSplitBar {
+  width: 5px;
+  background-color: #cdcdcd;
+  cursor: w-resize;
+  text-align: center;
+  color: white;
+}
+
+.fixHead{
+  position: absolute;
+  z-index: 2000;
+  top:0;
+}
+
+/* -------------------------------------- GANTT -----------------------------------*/
+
+.ganttTable{
+  table-layout:fixed;
+}
+
+.ganttTable td,.ganttTable th{
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+  border-left:1px solid #f1f1f1;
+}
+
+.ganttHead1,.ganttHead2{
+  height:22px;
+}
+.ganttHead1 th{
+  border-bottom:1px solid #efefef;
+}
+
+.ganttHead1 th,.ganttHead2 th{
+  border-left:1px solid #efefef;
+  padding: 0;
+  margin: 0;
+}
+
+.ganttToday{
+  position:absolute;
+  top:0;
+  width:1px;
+  height:100%;
+  border-left:2px dotted #13AFA5;
+}
+
+.ganttHighLight{
+  position:absolute;
+  top: 45px;
+  width:100%;
+  height:42px;
+  background-color:yellow;
+  opacity:.4;
+}
+
+.ganttButtonBar{
+  position:relative;
+  height:23px;
+  line-height:23px;
+  overflow:hidden;
+  background:#fff;
+  border:1px solid #fff;
+}
+
+.ganttButtonBar .buttons, .ganttButtonBar h1 {
+  display:inline-block;
+  margin:0px 0 0 10px;
+}
+
+
+.ganttButtonBar .button span.teamworkIcon{
+  font-size: 90%;
+  background:#fff;
+  border:1px solid #ccc;
+  float:left;
+  margin-top:1px;
+  margin-right:2px;
+}
+
+.ganttButtonSeparator{
+  border-left:1px solid gray;
+  padding-right:10px;
+  margin-left:10px;
+  font-size: 130%
+}
+
+
+.ganttLines{
+  position:absolute;
+  width:100%;
+  height:1px;
+  border-top:1px solid #eee;
+  z-index:1;
+}
+
+.ganttLinks{
+  z-index:10;
+}
+
+
+.end{
+  border-right:1px dotted #666
+}
+
+.holyH{
+  background-color: #e5e5e5;
+  color:#888;
+}
+.holy{
+  background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpDMjhFQjU1QzJDQjIxMUU4QTdFRUE1RjFEMkZBMUNFNiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpDMjhFQjU1RDJDQjIxMUU4QTdFRUE1RjFEMkZBMUNFNiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkMyOEVCNTVBMkNCMjExRThBN0VFQTVGMUQyRkExQ0U2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkMyOEVCNTVCMkNCMjExRThBN0VFQTVGMUQyRkExQ0U2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+91oqbAAAADJJREFUeNpivHHjBgMe8J8JnyQQMzLhkwQxmPBJYlOAIomuAEMSWQFWSZgCnJIgABBgALPOCpeWHcvaAAAAAElFTkSuQmCC');
+
+}
+
+
+/* -------------------------------------- TASK -----------------------------------*/
+
+.taskBoxDiv{
+  position:absolute;
+  height:25px;
+  margin-top:3px;
+  z-index:100;
+}
+
+.taskBoxDiv .layout {
+  height:100%;
+  color:#DB2727;
+  border-radius:2px;
+  background: #eee; /* Old browsers */
+  border:1px solid #bbb;
+}
+
+.taskBoxDiv .taskStatus {
+    left:5px;
+    top:10px;
+    position:absolute;
+    width:10px;
+    height:10px;
+}
+
+.taskBoxDiv .layout .milestone{
+  top:0px;
+  position:absolute;
+  width:18px;
+  background: url(res/milestone.png) no-repeat;
+  height:18px;
+  display:none;
+}
+.taskBoxDiv .layout .milestone.end{
+  right:0;
+}
+.taskBoxDiv .layout .milestone.active{
+  display:block;
+}
+
+.taskBoxDiv.hasChild .layout{
+  border-top:2px solid black;
+}
+
+.taskBoxDiv .taskProgress{
+  height:5px;
+  position:absolute;
+}
+
+.taskBoxDiv .layout.extDep{
+  background-image:url(res/hasExternalDeps.png);
+}
+
+
+.taskLabel{
+  position:absolute;
+  height:28px;
+  color:black;
+  text-align:right;
+  padding-right:5px;
+  overflow:hidden;
+  left:-200px;
+  width:195px;
+  white-space:nowrap;
+}
+
+
+.taskDepLine {
+  border: 1px solid #9999ff;
+  overflow: hidden;
+  position: absolute;
+}
+
+
+.taskEditRow,.emptyRow {
+  height:30px;
+}
+
+.taskEditRow .format100{
+  border: 0 none;
+  font-size: 12px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  font-family: Arial, sans-serif;
+  color: #777;
+  padding: 2px 2px 2px 12px;
+  text-align: left;
+  width: 100px;
+}
+.taskEditRow .format200{
+  border: 0 none;
+  font-size: 12px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  font-family: Arial, sans-serif;
+  color: #777;
+  padding: 2px 2px 2px 12px;
+  text-align: left;
+  width: 200px;
+}
+.taskEditRow input{
+  border: 0 none;
+  font-size: 12px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  font-family: Arial, sans-serif;
+  color: #777;
+  padding: 2px 2px 2px 12px;
+  text-align: left;
+  width: 100px;
+}
+
+.taskEditRow.rowSelected td,.taskEditRow.rowSelected input{
+  background-color:#FFFF99;
+}
+
+input[readonly]{
+  color: #c0c0c0;
+}
+
+.taskStatusBox{
+  position:absolute;
+  width:90px;
+  height:24px;
+  border:1px solid #a0a0a0;
+  background-color:#fff;
+  margin-top:-21px;
+  margin-left:-2px;
+  padding: 3px;
+  z-index: 100;
+}
+.taskStatus{
+  width:15px;
+  height:15px;
+  display:inline-block;
+  text-indent: 0;
+  position:relative;
+}
+
+.taskStatus[status=STATUS_ACTIVE]{
+ background-color: #74e4d6;
+}
+.taskStatus[status=STATUS_DONE]{
+ background-color: #a3d5fd;
+}
+.taskStatus[status=STATUS_FAILED]{
+ background-color:#e4e4e4;
+}
+.taskStatus[status=STATUS_SUSPENDED]{
+ background-color: #fdda7a;
+}
+.taskStatus[status=STATUS_UNDEFINED]{
+ background-color: #ffffff;
+}
+.taskStatus.selected{
+  border:#666 2px solid;
+}
+
+.ganttTaskEditor {
+    padding: 10px
+}
+
+
+.unselectable {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+
+.exp-controller{
+
+  display: none;
+}
+
+.expcoll{
+  display:inline-block;
+  cursor: pointer;
+  margin-left: -10px;
+  margin-right:2px;
+  width:16px;
+  height:16px;
+  background-image: url(res/toggle-expand.png);
+  position: relative;
+  top: 2px;
+}
+
+
+
+.expcoll.exp{
+  background-image: url(res/toggle_collapse.png);
+}
+
+.ui-resizable-helper { border: 1px dotted #00F;  }
+.ui-resizable-e, .ui-resizable-w {width: 5px;}
+.ui-draggable{
+  cursor:move;
+}
+
+
+/*--------------------------------------------------- SVG --------------------------------------------------*/
+.ganttSVGBox{
+  position: absolute;
+  top:5px;
+  left: 0;
+  height: 100%;
+  background-color: transparent;
+  width: 100%;
+}
+
+.taskBoxSVG{
+  overflow: visible;
+}
+
+.taskBoxSVG .taskLayout{
+  /*stroke-width:1px;
+  stroke:#bbb;*/
+  /*fill:url('#taskGrad'); do not work on firefox*/
+}
+
+.taskLinkPathSVG{
+  stroke:#9999ff;
+  stroke-width:3px;
+  fill:none;
+  cursor:pointer;
+}
+
+.ganttLinesSVG{
+  stroke:#eee;
+  stroke-width:1;
+}
+
+.ganttTodaySVG{
+  stroke-width:1px;
+  stroke:#fddc84;
+  stroke-linecap:"butt";
+  stroke-dasharray:1,0;
+}
+
+.taskStatusSVG[status=STATUS_ACTIVE]{
+  fill: #7fe7da;
+}
+.taskStatusSVG[status=STATUS_DONE]{
+  fill: #a1d4fd;
+}
+.taskStatusSVG[status=STATUS_FAILED]{
+  fill: #e4e4e4;
+}
+.taskStatusSVG[status=STATUS_SUSPENDED]{
+  fill: #7fe7da;
+}
+.taskStatusSVG[status=STATUS_UNDEFINED]{
+  fill: #ffffff;
+}
+.taskStatusSVG[status=STATUS_RED]{
+  fill: #fddc84;
+}
+
+.deSVG.deSVGdrag {
+  cursor: move;
+}
+.deSVG.deSVGhand {
+  cursor: ew-resize;
+}
+
+
+
+.linkHandleSVG{
+  display:none;
+  stroke:#888;
+  stroke-width:1px;
+  fill:#eee;
+  cursor: pointer;
+}
+
+.linkLineSVG{
+  stroke-width:5px;
+  stroke: #cfbefe;
+  stroke-linecap:"round";
+  opacity: .5;
+    /*stroke-dasharray:5,5;*/
+}
+
+.linkOnProgress .deSVG.taskBoxSVG  {
+  cursor:cell;
+}
+
+.taskBoxSVG.linkOver .taskLayout{
+  stroke-width:5px;
+  stroke:#cfbefe;
+  opacity: .5;
+}
+
+.taskLabelSVG {
+  stroke: none;
+  /*fill:#999;*/
+  fill:#fff;
+  font-size: 12px;
+}
+.taskLabelSVGAsh{
+	stroke: none;
+  fill:#999;
+  font-size: 12px;
+}
+
+.critical .taskLinkPathSVG{
+  stroke:red;
+}
+
+.taskBoxSVG.critical .taskLayout{
+  stroke:red;
+}
+
+.focused .taskLinkPathSVG{
+  stroke-width:5px;
+  stroke: #a7d8fd;
+}
+
+.taskBoxSVG.focused .taskLayout{
+  stroke-width:3px;
+  stroke: #a7d8fd;
+}
+
+
+/*--------------------------------------OpenDiv--------------------------------------*/
+.headTool-right{float:right;font-size:12px;}
+.headTool-right span{float:left;margin-left:2px;}
+.selectDate{font-size:12px;padding:2px 0px 3px 0px;border:0px;border-left:1px solid #ccc;margin-top:0px;}
+.openDetails{border:2px solid #3bc3ad;background:#fff;position:absolute;top:0px;left:0px;z-index:9999;display:none;}
+.appRect{stroke:black;}
+.openShow{position:absolute;top:0px;left:0px;background:#ffffcf;border:1px solid #a8a87b;width:490px;z-index:9999;display:none;padding:5px 10px;cursor:pointer;}
+.openShow .tipIcon{display:none;width:11px;height:7px;display:inline-block;position:absolute;top:-6px;}
+.openShow dl{margin:0px;padding:0px;}
+.openShow dt p{height:10px;background:#d7d7d7;display:block;border-radius:10px;overflow:hidden;}
+.openShow dt p span{background:#7fe7da;display:inline-block;height:10px;overflow:hidden;border-radius:10px;float:left;}
+.openShow dt .li{float:left;display:inline-block;text-align:right;width:70px;font-size:12px;color:#333;margin-bottom:-15px;color:#aeaeae;}
+.openShow dt .li em{font-style: normal;color:#888;padding:3px 0px;display:inline-block;}
+.openShow dt .active{color:#7fe7da;}
+.openShow dt .action{color:#ff9900;}
+.openShow dd{height:60px;background:#e4e4e4;margin-left:0px;margin-right:60px;padding:0px;}
+.openShow .cue{padding-top:10px;margin-right:0px;float:right;width:60px;background:#ffcc00;line-height:22px;text-align:center;color:#fff;display:inline-block;font-size:16px;}
+.openShow li{list-style:none}
+.openShow dd ul{padding:0px;margin:0px;}
+.openShow dd li{float:left;font-size:12px;margin:0px;padding:3px;margin-top:5px;color:#434343;}
+.openShow dd li span{padding-top:3px;color:#888;display:inline-block;}
+.openShow dd .li-c{margin-left:30%;margin-top:10px;}
+.openShow dd .li-c span{font-weight:bold;color:#ff6600;font-size:14px;}
+.openShow dd .li-r{float:right;text-align:right;}
+.clear{clear:both;}
+.addpeople,.selectStyle{position:absolute;z-index:9999;top:0px;left:0px;display:none;width:140px;height:150px;}
+.addpeople input[type=text]{font-size:12px;border-radius:0px;}
+.addpeople dl{border:1px solid #91b4b7;margin:0px;padding:0px;margin-top:-1px;background:#fff;}
+.addpeople dt{width:60px;float:left;display:inline-block;text-align:right;line-height:24px;}
+.addpeople dt a{font-weight:normal;font-size:12px;color:#657180;border-bottom:1px solid #91b4b7;display:block;padding-right:5px;}
+.addpeople dd{border-left:1px solid #91b4b7;margin-left:60px;margin:0px;font-size:12px;color:#657180;padding:5px;overflow-y:auto;display:none;}
+.addpeople .show{background:#3399ff;color:#fff;}
+.addpeople dd label{display:block;line-height:24px;height:24px;}
+.addpeople dd label input[type=checkbox]{float:left;margin-top:6px;}
+.selectStyle{border:1px solid #91b4b7;background:#fff;height:auto;width:100px;}
+.selectStyle select{border:0px;font-size:12px;padding:0px;width:100%;}

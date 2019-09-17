@@ -1,0 +1,125 @@
+@import './calendarStyle.css';
+.__vev_calendar-wrapper{
+    border-radius:@borderRadius12;box-shadow:@boxShadow;
+}
+#remind{
+    display:none;
+}
+#leave{
+    &:extend(#remind);
+}
+.dataTip{
+    background:#f1f1f1;position:absolute;top:0;left:0;width:300px;height:140px;display:inline-block;z-index:130;
+    .tipimg{
+        position:absolute;top:-6px;left:73px;width:12px;height:6px;background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAGCAYAAAD37n+BAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo3RDcyQzBGNzMyNUExMUU4ODMzN0VCQTFBODZBNkU4QSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3RDcyQzBGODMyNUExMUU4ODMzN0VCQTFBODZBNkU4QSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjdENzJDMEY1MzI1QTExRTg4MzM3RUJBMUE4NkE2RThBIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjdENzJDMEY2MzI1QTExRTg4MzM3RUJBMUE4NkE2RThBIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+VXLT/QAAADtJREFUeNpi/P//PwM6UL6xByx4V8OFEV2OCZdidDZWDdgUoIsx4VOMTY6JkGJ0TYxK13cTVIwMAAIMAIu/H2tJSNbHAAAAAElFTkSuQmCC')
+    }
+    dt{
+        background:#22d7bb;height:30px;line-height:30px;padding:0px 10px;font-size:12px!important;color:#fff;
+        label{
+            margin-right:10px;float:left;
+            &>input[type=radio]{
+                float:left;margin-top:7px;margin-right:2px;
+            }
+        }
+    }
+    dl{
+        margin:0px;padding:0px;font-size:12px;
+    }
+    dd{
+        padding:0px;margin:0px!important;padding:5px 10px;position:absolute;
+        textarea{
+            width:280px;resize:none;margin-top:5px;height:55px;padding:5px;
+        }
+        button{
+            padding:0px 10px;margin-right:5px;
+        }
+        p{
+            margin-bottom:5px;height:65px;
+        }
+        .seletTime{
+            padding-top:16px;
+            
+        }
+    }
+}
+.date-num{
+    border:2px solid transparent;
+}
+.today{
+    .date-num{
+        border:2px solid #f29543;
+    }
+    
+}
+.today .select-event{
+    border:1px solid #f29543;
+    width:36px;height:36px;position:absolute;left:50%;top:50%;z-index:1;margin-left:-18px;margin-top:-18px;
+}
+.deleteBtn{
+    background:#e43;color:#fff;width:16px;height:16px;position:absolute;line-height:16px;z-index:200;top:6px;right:-5px;text-align:center;border-radius:2px;cursor:pointer;
+}
+.dateSelect{
+    position:absolute;z-index:200;margin-left:130px;margin-top:2px;
+    span{
+        float:left;line-height:34px;margin-left:5px;
+        &:nth-of-type(1){
+            line-height:40px;display:inline-block;
+        }
+    }
+    .dateBtn{
+        border:0px;background:#18bfa4;color:#fff;padding:1px 10px;cursor:pointer;height:24px;line-height:24px;display:inline-block;margin-top:6px;
+    }
+}
+.more{
+    a{
+        color:#177de3;
+        &:hover{
+            color:#57abff;
+        }
+    }
+}
+.schedule{
+    position:absolute;color:#fff;width:277px;height:246px;overflow:auto;z-index:100;margin-top:96px;right: 16px;
+    p{
+        height:26px;line-height:26px;display:block;
+        span{
+            float:left;
+        }
+        em{
+            float:right;padding-right:10px;font-style:normal;
+        }
+        
+    }
+    .deleItem{
+        background:#e43;color:#fff;height:14px;line-height:14px;padding:0px 2px;display:inline-block;border-radius:2px;
+    }
+}
+.remindDiv{
+    font-size:12px;position:absolute;margin-top:-13px;background:#afafaf;color:#fff;padding:0px 2px;z-index:111;transform-origin: 0% 0%;transform:scale(0.8);
+}
+.remindDivImport{
+    z-index: 112;
+}
+.remindHoliday{
+    background: #ff6600;
+}
+.itemBoder{
+    background:#feeffe;
+}
+.item{
+        &:nth-of-type(1),
+        &:nth-of-type(7),
+        &:nth-of-type(8),
+        &:nth-of-type(14),
+        &:nth-of-type(15),
+        &:nth-of-type(21),
+        &:nth-of-type(22),
+        &:nth-of-type(28),
+        &:nth-of-type(29),
+        &:nth-of-type(35),
+        &:nth-of-type(36),
+        &:nth-of-type(42)
+        {
+            &:extend(.itemBoder);
+        }
+    }

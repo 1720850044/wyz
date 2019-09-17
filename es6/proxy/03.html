@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        var arr = [{particle: "2018-04-01", x1: 33, x2: 52, x3: 22, x4: 78},
+        {particle: "2018-04-02", x1: 66, x2: 96, x3: 100, x4: 88},
+        {particle: "2018-04-03", x1: 100, x2: 36, x3: 28, x4: 26},
+        {particle: "2018-04-04", x1: 8, x2: 71, x3: 5, x4: 74},
+        {particle: "2018-04-05", x1: 82, x2: 54, x3: 3, x4: 36},
+        {particle: "2018-04-06", x1: 67, x2: 68, x3: 7, x4: 69}];
+        var titleArr = [["particle", "粒度"],["x1", "字段1"],["x2", "字段2"],["x3", "字段3"],["x4", "字段4"]];
+        
+        // for(var i=0;i<arr.length;i++){
+        //     console.log(arr[i]);
+        //     // for( key in arr[i]){
+        //     //     console.log(arr[i][key])
+        //     // }
+        // }
+        var newArr1 = []
+        titleArr.forEach(function(val,index){
+            var newArr = [];
+            arr.forEach(function(v,k){
+                newArr.push(Object.values(v)[index]);
+            });
+            newArr1.push(newArr);
+        })
+        console.log(newArr1);
+    </script>
+</body>
+</html>

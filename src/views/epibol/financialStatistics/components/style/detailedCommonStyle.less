@@ -1,0 +1,339 @@
+.income-details {
+    .content {
+      .over-view {
+        margin-top: 20px;
+        // margin-bottom: 20px;
+        .total-income {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          text-align: center;
+          background-color: #fff;
+          padding: 5px 12px;
+          border-radius: 4px;
+          .total-income-show{
+            padding: 10px 40px 10px 10px;
+            &:nth-child(3),&:nth-child(7){
+              border-right: 1px dashed #d8d8d8;
+            }
+            &:nth-child(4){
+              padding-left: 40px;
+            }
+            &:nth-child(8){
+              padding: 0 !important;
+            }
+          }
+          .filters-date{
+            display: flex;
+            align-items: center;
+            margin-left: 40px;
+            margin-right: 40px;
+            p{
+              font-size: 14px;
+              color: #777;
+              margin-right: 10px;
+              i{
+                font-size: 18px;
+                color: #b4b4b4;
+                margin-right: 15px;
+                
+              }
+            }
+          }
+          .btn-style{
+            .ivu-btn{
+              border-color: transparent;
+              font-size: 14px;
+              color: #3bceb6;
+              min-height: 38px;
+              background-color: #fff;
+              &:hover {
+                box-shadow: 0 0 0 1px rgba(59,206,182,.2);
+              }
+              &:focus {
+                box-shadow: 0 0 0 1px rgba(59,206,182,.2);
+              }
+              .icon-export{
+                font-size: 13px;
+              }
+              .addBtn{
+                color: #fff !important;
+                background-color: #3bceb6 !important;
+              }
+            }
+          }
+          .sum {
+            font-size: 14px;
+            color: #3cd2b4;
+            font-weight: 550;
+            margin-bottom: -2px;
+          }
+          .text {
+            font-size: 10px;
+            color: @black_3;
+          }
+        }
+        // .operation {
+        //   display: flex;
+        //   align-items: center;
+        //   .filters-box{
+        //     display: flex;
+        //     align-items: center;
+        //   }
+        //   .aside{
+        //     margin-right: 10px;
+        //     .ivu-input-wrapper{
+        //       .ivu-input-icon{
+        //         width: 40px;
+        //         font-size: 20px;
+        //         color: #bdbdbd;
+        //         height: 40px;
+        //         line-height: 40px;
+        //       }
+        //       .ivu-input{
+        //         font-size: 14px !important;
+        //         color: #bdbdbd;
+        //         border: 1px solid transparent;
+        //         &:focus{
+        //           border: 1px solid @base;
+        //           box-shadow: none;
+        //         }
+        //       }
+        //     }
+        //   }
+        //   .filters {
+        //     padding: 4px 10px;
+        //     background-color: #fff;
+        //     border-radius: 3px;
+        //     display: flex;
+        //     .filter-item{
+        //       margin-right: 10px;
+        //     }
+        //     .filters-date{
+        //       display: flex;
+        //       align-items: center;
+        //       margin-left: 10px;
+        //       p{
+        //         font-size: 14px;
+        //         color: #777;
+        //         margin-right: 10px;
+        //       }
+        //     }
+        //     .ivu-input-wrapper {
+        //       .ivu-icon {
+        //         cursor: pointer;
+        //       }
+        //       .ivu-input {
+        //         height: 32px !important;
+        //       }
+        //     }
+        //     .ivu-select {
+        //       min-width: 170px;
+        //       color: #777;
+        //       &:hover{
+        //         box-shadow: none;
+        //       }
+        //       .ivu-select-selection {
+        //         height: 32px !important;
+        //         .ivu-select-placeholder{
+        //           height: 32px;
+        //           line-height: 32px;
+        //           font-size: 14px;
+        //           color: @black_3;
+        //         }
+        //         .ivu-select-selected-value {
+        //           line-height: 32px !important;
+        //           height: 32px !important;
+        //         }
+        //       }
+        //     }
+        //     .ivu-date-picker {
+        //       .ivu-date-picker-rel {
+        //         .ivu-input-wrapper {
+        //           .ivu-icon {
+        //             margin-top: -7px;
+        //           }
+        //         }
+        //       }
+        //     }
+        //   }
+        //   .btn-style{
+        //     .ivu-btn{
+        //       border-color: transparent;
+        //       font-size: 14px;
+        //       color: #3bceb6;
+        //       margin-left: 10px;
+        //       min-height: 38px;
+        //       background-color: #fff;
+        //       &:hover {
+        //         box-shadow: 0 0 0 1px rgba(59,206,182,.2);
+        //       }
+        //       &:focus {
+        //         box-shadow: 0 0 0 1px rgba(59,206,182,.2);
+        //       }
+        //       .icon-export{
+        //         font-size: 13px;
+        //       }
+        //     }
+        //   }
+        // }
+      }
+      .content-top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top:20px;
+        .btn-style{
+          .ivu-btn{
+            border-color: transparent;
+            font-size: 14px;
+            color: #3bceb6;
+            min-height: 38px;
+            max-height: 40px;
+            background-color: #fff;
+            &:hover {
+              box-shadow: 0 0 0 1px rgba(59,206,182,.2);
+            }
+            &:focus {
+              box-shadow: 0 0 0 1px rgba(59,206,182,.2);
+            }
+            .icon-export{
+              font-size: 13px;
+            }
+          }
+        }
+      }
+      .income-details-list {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+        .list-header {
+          display: flex;
+          justify-content: space-between;
+          color: #bdbdbd;
+          height: 46px;
+          line-height: 46px;
+          font-weight: lighter;
+          background-color: #fafbfb;
+          border-bottom: 1px solid #eef1f2;
+          margin-bottom: 0;
+          font-size: 14px;
+          span {
+            flex: 1;
+            text-align: center;
+            &:nth-child(6),&:nth-child(7){
+              flex: 2;
+            }
+            &:first-child {
+              padding-left: 20px;
+            //   flex: 2;
+            }
+            &:last-child {
+              padding-right: 20px;
+            }
+          }
+        }
+        dl {
+          overflow: auto;
+          height: 100%;
+        }
+        dd {
+          text-align: center;
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px solid #e1e1e1;
+          background: #fff;
+          margin: 0;
+          font-size: 13px;
+          font-family: @ff;
+          font-weight: lighter;
+          height: 60px;
+          line-height: 60px;
+          overflow: hidden;
+          span {
+            color: #777;
+            flex: 1;
+            text-align: center;
+            overflow: hidden;
+            text-overflow:ellipsis;
+            white-space: nowrap;
+            &:first-child {
+              padding-left: 20px;
+              // flex: 2;
+            }
+            &:nth-child(6),&:nth-child(7){
+              flex: 2;
+            }
+            &:last-child {
+              padding-right: 20px;
+            }
+            .ivu-btn{
+              width: 45px;
+              span{
+                margin-left: -15px;
+              }
+            }
+            .save{
+              span{
+                color:@base;
+              }
+            }
+            .cancel{
+              span{
+                &:hover{
+                  color:#f44336 !important;
+                }
+              }
+
+            }
+          }
+          .action{
+            .ivu-icon{
+              &:hover{
+                color: @base;
+              }
+            }
+            .iconfonts{
+              &:hover{
+                color: #f44336;
+              }
+            }
+          }
+          i {
+            font-style: normal;
+            cursor: pointer;
+          }
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+      .paging-style{
+        text-align: right;margin-bottom:40px;
+      }
+      //确认添加表单
+      .from-verification {
+        dl {
+          dd {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            .leftSty {
+              width: 70px;
+              display: inline-block;
+              text-align: right;
+              color: @black_3;
+              font-size: 12px;
+            }
+            .rightSty {
+              position: relative;
+              width: 100%;
+              margin-left: 20px;
+            }
+          }
+        }
+      }
+    }
+  }

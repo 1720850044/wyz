@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        function timeout(ms) {
+            return new Promise((resolve) => {
+                setTimeout(resolve, ms);
+            });
+        }
+
+        async function asyncPrint(value, ms) {
+            await timeout(ms);
+            console.log(value)
+        }
+        asyncPrint('hello world', 50);
+
+        let map = new Map()
+            .set(1, [1,2,3])
+            .set(2, [2,3,1])
+            .set(3, 'c');
+        console.log(map.get(1));
+    </script>
+</body>
+</html>

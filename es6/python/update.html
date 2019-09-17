@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="fileInput"/>
+    <button onclick="test()">点击</button>
+
+    <script>
+        function test(){
+            var fileInput = document.getElementById('fileInput').files[0];
+            var fromData = new FormData();
+            fromData.append('file',fileInput);
+            console.log(fromData.get('file').name)
+        }
+        var name = '小明';
+        function fn(){
+            (function(){
+                this.name = "小王";
+            }).call(window);
+        }
+        fn.prototype.ceat = function(){
+            this.name = "小李";
+        }
+
+        console.log(new new fn().ceat().name)
+    </script>
+</body>
+</html>

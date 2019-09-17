@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <style>
+       *{ margin:0; padding:0; font-family:"Microsoft yahei",serif;}
+       li{ list-style-type: none;}
+       body{
+           background: #000;
+       }
+       #wrap{
+           width: 300px;
+           height: 500px;
+           margin: 50px auto;
+           border: 10px solid #fff;
+       }
+       #box{
+           overflow: hidden;
+           position: relative;
+           width: 300px;
+           height: 500px;
+       }
+       #box h1{
+           font-size: 24px;
+           color: #fff;
+           text-align: center;
+           padding-top: 50px;
+       }
+       #box .diff{
+           width: 150px;
+           height: 30px;
+           background: #fff;
+           line-height: 30px;
+           text-align: center;
+           font-size: 14px;
+           margin: 60px auto;
+           transition: .2s;
+           cursor: pointer;
+       }
+       #box .diff.bt{
+           background: pink;
+           color: #F00;
+           font-weight: bold;
+       }
+       #box .diff:hover{
+           background: pink;
+           color: #FFF;
+       }
+       #box .plane,#box .biu,#box .enemy,#box .boom{
+           position: absolute;
+       }
+       #box .score{
+           position: absolute;
+           top: 10px;
+           left: 10px;
+           font-size: 14px;
+           color: #fff;
+           font-weight: bold;
+           text-decoration: underline;
+           z-index: 9999;
+       }
+       #box .over{
+           position: relative;
+           width: 200px;
+           height: 400px;
+           margin: 50px;
+           background: #fff;
+       }
+       #box .over h2{
+           font-size: 22px;
+           text-align: center;
+           padding-top:35px;
+       }
+       #box .over .showScore{
+           font-size: 14px;
+           font-weight: bold;
+           text-align: center;
+           margin-top: 30px;
+       }
+       #box .over .scoreTxt{
+           font-size: 12px;
+           text-align: center;
+           font-weight: bold;
+       }
+       #box .over .scoreTxt span{
+           color: #F60;
+       }
+       #box .over .reStart{
+           position: absolute;
+           left: 50%;
+           bottom: 35px;
+           width: 100px;
+           height: 30px;
+           margin-left: -50px;
+           line-height: 30px;
+           text-align: center;
+           background: #000;
+           color: #fff;
+           font-weight: bold;
+           font-size: 12px;
+           cursor: pointer;
+       }
+    </style>
+</head>
+
+<body>
+<div id="wrap" >
+    <div id="box"></div>
+</div>
+
+<div style="display: none" class="checkpoint">
+    ["简单难度" , "中等难度" , "困难难度" , "变态附体"]
+</div>
+
+<script type="text/html" class="J_title">
+    <h1>飞机大作战</h1>
+</script>
+<script type="text/html" class="J_game_tpl">
+    <p class="diff">{{checkpoint}}</p>
+</script>
+<script src="utils/utils.js"></script>
+<script src="utils/tools.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>

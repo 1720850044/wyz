@@ -1,0 +1,463 @@
+.contDetails,.newContractData{
+    .second-navigation-bar {
+        margin-bottom: 10px;
+        overflow: hidden;
+        > a {
+            float: left;
+            font-size: 13px;
+            color: @black_2;
+            padding: 0 2px;
+            border-bottom: 2px solid @baseboard;
+            &.second-nav-title {
+                border-bottom: 2px solid @base;
+                font-size: 14px;
+                margin-top: -1px;
+            }
+            &:hover {
+                border-bottom: 2px solid @base;
+                -webkit-transition: border-bottom-color 0.2s;
+                -moz-transition: border-bottom-color 0.2s;
+                -ms-transition: border-bottom-color 0.2s;
+                -o-transition: border-bottom-color 0.2s;
+                transition: border-bottom-color 0.2s;
+            }
+        }
+        > .icon {
+            float: left;
+            margin: 0 5px;
+            font-size: 18px;
+            color: @black_2;
+        }
+    }
+    .enterContract{
+        position:relative;z-index:11;bottom:0px;background:#fff3c5;width:100%;height:50px;line-height:50px;
+        span{
+            padding-left:10px;
+        }
+        em{
+            float:right;padding-right:10px;
+            .error-btn{
+                &:focus {
+                    color: #fff !important;
+                    box-shadow: 0 0 0 2px rgba(237,63,20,.2) !important;
+                }
+                &:hover{
+                    color: #fff !important;
+                }
+                &:active {
+                    background-color: #e13c13 !important;
+                    border-color: #e13c13 !important;
+                }
+            }
+        }
+    }
+    //margin-top:@p30;
+    .statusNav{
+        line-height:34px;
+        background:#dfe1e2;
+        border-radius:@r4;
+        text-align:center;
+        color:@black_2;
+        font-size:13px;
+        font-weight:lighter;
+        font-family:@ff;
+        span{
+            width:33.333%;
+            float:left;
+            background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAiCAIAAAALc8TIAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAx9pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QTRBRjQxNTJBOUM3MTFFOEFGQkZFRjhBMDE0MDY1MTYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QTRBRjQxNTNBOUM3MTFFOEFGQkZFRjhBMDE0MDY1MTYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBNEFGNDE1MEE5QzcxMUU4QUZCRkVGOEEwMTQwNjUxNiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBNEFGNDE1MUE5QzcxMUU4QUZCRkVGOEEwMTQwNjUxNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pog2VbQAAAFOSURBVHjahJTZjoQgEEUHXMAF8P+/cToRFBXbpa/tQ/cYqalEE5MTyKm6JXPeSykfv49pmn7ixdu23fe9aRrGGMWty9p1XZImSimKw9N3/bIstarTNKU43Gtbi3tNYygOBYlpnCAkC0lxqNa+hcy90Iejhfj3ByH0hyOE+OX78BnHw6coKA6FI3EwjvwWuuHWde1clySJ0oriDqH+LVR/hO453It84F7kg+JQYQoQElKcQpzIiLMOb230P1xZlngPw0Bx8MVg4I4hUZwxR/+sPXoZ5XKRF2Uxh3kcRsoXhx2DsZbqc1mVeZ4PfpjnOcoxzrTW+7Y756gcIKQwRWBhGuUwTcwUk8V8qfxdenHPCSGwbCEELB61H2fWEVJqL6u6yrLM9/75fEY5zjl6sW3bpRdXDvkGiqwDjXLoRVVV6IX3nvpfnXt17hjBvQQYAKhwwuZFDbfJAAAAAElFTkSuQmCC') #dfe1e2;
+            background-repeat:no-repeat;
+            background-position:right 0px;
+            border-radius:@r4 0px 0px @r4;
+            cursor:pointer;
+            &:nth-of-type(3){
+                background-image:none;
+                border-radius:0px @r4 @r4 0px;
+            }
+            &:nth-of-type(2){
+                border-radius:0px;
+            }
+        }
+        .show{
+            background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAiCAIAAAALc8TIAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAx9pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QTRBRjQxNEVBOUM3MTFFOEFGQkZFRjhBMDE0MDY1MTYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QTRBRjQxNEZBOUM3MTFFOEFGQkZFRjhBMDE0MDY1MTYiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBNEFGNDE0Q0E5QzcxMUU4QUZCRkVGOEEwMTQwNjUxNiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBNEFGNDE0REE5QzcxMUU4QUZCRkVGOEEwMTQwNjUxNiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PkFKsYUAAAHLSURBVHjahJS7S8NAHMe95GzSmpfFVhvFF0qdBN1EBwcHF8FBcBF0cFDx7/APUGcHQRDcnQURRMS1HXwgvtpqwTybXNvEnw9Ea+78Qo4LfLi7zy+/Cxq/ONzoGx1TUuWXsud5TZRw8Gw95EgYaJqGEGJxT6SyV7zmMS/LMouD7JduHokryRLGmMXBvlsPedhX1VQWBzk1n0+MkgiJiywOsv2Y94O6pkYI/eIKIFS6iRTiGt5B6N6PEGrkqu9Cub9C3N8jn1kvx0bx3SceZ3HfQrDkt1A0VyLebvGK53lZkVkc5OD59s53JOlLiMqB0OaHEPQHi4OcW+Wj14IgCiDE4iA7hUsYFVX5h5tqzcDoui6LS8fE+VRvvV63LZvFrWSyAscbhhGGIZUbbmmd1DqITypuheqLmtCaPgSfAhZj1Xk6qWcTiuu4hBAql+DxcmYwDELTNFl9sJDuT2LBsiwwpXJ6LDGX6qnVarZts/pvVc82I+6zFlRuREpOqGnf972KR70fHELrnUMwMV4N1r2cSXb1i7JjO9VqlcpJPF7qGAiC4GctIrjF9gENxyzTApTKdQsts23dUAvHcVj/qzU9ixGC4zfU4mfeBBgAPbPC6O9asusAAAAASUVORK5CYII=');
+            background-color:@base;
+            background-repeat:no-repeat;
+            background-position:right 0px;
+            color:@white;
+        }
+        .nextshow{
+            background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAiCAIAAAALc8TIAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAx9pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIFdpbmRvd3MiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6M0EzNEM2OTlBOUNCMTFFODk3OTFFRUIxQzk3MkU5NUQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6M0EzNEM2OUFBOUNCMTFFODk3OTFFRUIxQzk3MkU5NUQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDozQTM0QzY5N0E5Q0IxMUU4OTc5MUVFQjFDOTcyRTk1RCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDozQTM0QzY5OEE5Q0IxMUU4OTc5MUVFQjFDOTcyRTk1RCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PiMjVu8AAAHuSURBVHjaYjn4/oUln2jV/XPHP71mwA2YJj+9/uv/v1xpTTZGJnzqnv/6vvTlPUk2zmhxJXzqgHjFq/vPfn2LEFOUYuPCpw5o7+SnN4D25kpr4FMHBCc+vT768ZUFn6g1vxg+dUAw5dmNn//+5khpsDMx41P3AuihV/clgB4SU8SnDuKhJz9BHpJh58Kn7jfIQ9dZQR7SxKcOCE59fnP440szXhFbfnF86nB5CIu6V79+LHp5V4yNI05cGZ86IFj9+uHjn19DReVl2bnxqQN6aBLYQ3kwD+FMI2c+vz3w4YUJr7CDgAQ+dUAw78UdIJkkoUJAnYugJJDc8/45PnVA/4aLKgD9vvL1A3zqMiTVgeE34/lNYFjiVKfHLQh0/qWv74FewelfRgbGLClggv0/7dmN/3jC2UNISp2Lb8e7Zze/fcIZH1zMLCmSqt/+/pnz/Da+dBAjpiTEwr7k1b13f37iVAfMbyGi8sC8t+b1Q3zpL1NKHRin05/dBMYvTnWGPEI2/GLnv7w78vEVzvzBxMiYI63x7///KU9v4MuXvkIyShy8m989uffjM051PMwsCRIqX/7+WQBOIDjVxYurCLCwLXx558OfXzjVybFzB4jIPfr5dcObR/jKqywpdRZGxmnPbv75/x+POoAAAwCFOscG3IxqfQAAAABJRU5ErkJggg==');
+            background-repeat:no-repeat;
+            background-position-x: right;
+            background-color:@base;
+            color:@white;
+        }
+    }
+    .contContent{
+        background:@white;
+        border-radius:@r4;
+        margin-top:@p30;
+        padding:@p20;
+        overflow:auto;
+        //基本信息
+        .contractBase{
+
+            // Base
+            .baseInfo{
+                width:50%;
+                float:left;
+                height:100%;
+                border-right: 1px dashed #e0e0e0;
+                .infoTitle{
+                    text-align:center;
+                    line-height:34px;
+                    font-size:14px;
+                    font-weight:lighter;
+                    color:@black_2;
+                    margin:@p15 0px;
+                }
+                .cost{
+                    color:@base;
+                    font-size:20px;
+                    font-family:@ff;
+                    font-weight:lighter;
+                    text-align:center;
+                    span{
+                        color:@black_2;
+                        font-size:@fs14;
+                    }
+                }
+                .list{
+                    color:@black_2;
+                    font-size:13px;
+                    font-weight:lighter;
+                    padding:0px 140px;
+                    dd{
+                        margin:@p20 0px;
+                        span{
+                            color:#bdbdbd;
+                            font-size:@fs14;
+                        }
+                        .listP{
+                            margin-top:@p10;
+                            font-size: 13px;
+                            border-bottom:1px solid @baseboard;
+                            padding-bottom:@p10;
+                        }
+                        .companyInfo{
+                            float:left;
+                            width:50%;
+                            padding-left:@p20;
+                            font-family:@ff;
+                            font-weight:lighter;
+                            letter-spacing:1px;
+
+                            &:nth-of-type(1){
+                                border-right:1px dashed #f1f1f1;
+                                padding-right:@p20;
+                                padding-left:0px;
+                            }
+                            p:nth-of-type(1){
+                                margin-bottom: 12px;
+                            }
+
+                            p{
+                               margin-bottom: 20px;
+                                &:nth-of-type(1){
+                                    padding-left:@p20;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Schedle
+            .contractSchedle{
+                em{
+                    font-style:normal;
+                }
+                padding:@p50;
+                overflow:auto;
+                text-align:center;
+                float:left;
+                width:50%;
+
+                .Flex{
+                  display:inline-block;text-align:left;
+                  .schedle{
+                      margin-left: 200px;
+                      li{
+
+                          span{
+                            width:15px;height:15px;display:inline-block;border-radius:100%;overflow: hidden;
+                            border:1px solid @base;background:#fff;float:left;
+                            margin:0px 22px;
+                          }
+                          .notLine{
+                              border-color:#ddd;
+                          }
+                          .state{
+                            background:@base;border-color:@base;color:#fff;
+                          }
+                          .Sline{
+                            width:32px;background:#3bceb6;height:1px;display:inline-block;overflow:hidden;position: absolute;top:32%;left:0;
+                            // position:fixed;
+                            // margin-left:-22px;margin-top:7px;
+                          }
+                          .notSline{
+                              background:#e9e9e9;
+                          }
+                          .statusInfo{
+                              float:left;margin-left:10px;width:180px;line-height:18px;color:#c9c9c9;
+                              margin-top:-13px;text-align:center;margin-bottom:-25px;height:62px;
+                              position: relative;
+                              .gathering-button,.pay-button{
+                                margin: 0;
+                                padding: 5px 10px;
+                                border: 1px solid transparent;  //自定义边框
+                                outline: none;    //消除默认点击蓝色边框效果
+                                background-color: rgb(252, 196, 74);
+                                color: #fff;
+                                border-radius: 50px;
+
+                              }
+                              .gathering-button{
+                                position: absolute;
+                                right: -43.6%;
+                                top: 5%;
+                              }
+                              .pay-button{
+                                position: absolute;
+                                right: -31%;
+                                top: 7%;
+                              }
+                              .text{
+                                background:@base;line-height:38px;color:@white;display:block;border-radius:50px;font-size:@fs16;
+                                border:1px solid @base;letter-spacing:@p5;
+                              }
+                              .blueText{
+
+                                background:#fff;
+                                border-color: @baseboard;
+                                color:@black_2;
+                              }
+                              p{
+                                  margin-top:12px;color:@black_2;font-family:@ff;font-weight:lighter;
+                              }
+                              .iconfonts{
+                                  float:left;margin-left:10px;font-size:@fs20;
+                              }
+                          }
+                          .leftSatus{
+                              position: relative; // 用户界面 - 滚动鼠标后位置偏移
+                            .statusInfo{
+                                margin-left:-190px;
+                                font-size: 13px;
+                                position: relative;
+                                .gathering-button,.pay-button{
+                                    margin: 0;
+                                    padding: 5px 10px;
+                                    border: 1px solid transparent;  //自定义边框
+                                    outline: none;    //消除默认点击蓝色边框效果
+                                    background-color: rgb(252, 196, 74);
+                                    color: #fff;
+                                    border-radius: 50px;
+                                }
+                                .pay-button{
+                                    cursor: pointer;
+                                    position: absolute;
+                                    top: 9.6%;
+                                    left: -31.5%;
+                                }
+                                .gathering-button{
+                                    position: absolute;
+                                    // top: 9.6%;
+                                    // left: -44.5%;
+                                    width:80px;
+                                    top: 11.6%;
+                                    right: 106.5%;
+                                }
+                                .iconfonts{
+                                    float:right;margin-right:10px;margin-left:0px;
+                                }
+                            }
+                            .Sline{
+                                margin-left:-10px;
+                            }
+                          }
+                      }
+                      .Pline{
+                        margin:4px 29px;height:55px;width:1px;display:inline-block;overflow:hidden;border-left:1px dotted #e9e9e9;
+                      }
+                      .lineFather{
+                          position: relative;
+                          .Sline{
+                            position: absolute;
+                            left:15%;
+                          }
+                      }
+                  }
+                }
+            }
+
+        }
+        //金额及付款
+        .contractCost{
+            h1{
+                color: @black_2;
+            }
+            .costTitle{
+                font-size:@fs16;
+                font-weight:lighter;
+            }
+            .costContent{
+                margin:@p20 0px;width:100%;
+                ul{
+                    border:1px solid @baseboard;
+                }
+                li{
+                    font-family:@ff;
+                    font-size:@fs14;
+                    display:flex;
+                    justify-content: space-between;
+                    font-weight:lighter;
+                    border-top:1px solid @baseboard;
+                    line-height:78px;
+                    .span{
+                        flex: 1;
+                        text-align: center;
+                        &:first-child{
+                            text-align: left;
+                            padding-left: 10px;
+                        }
+                    }
+                }
+                .title{
+                    line-height:46px;border-top:0px;
+                    background:#fdfdfd;
+                }
+                .fooder{
+                    background: #fafdfd;
+                    line-height:46px;
+                    text-align:right;
+                    padding-right:@p10;
+                    em{
+                        font-style:normal;
+                        color:#e43;
+                        font-size:@fs18;
+                    }
+                }
+            }
+            .payContent{
+                li{
+                    .span{
+                        &:nth-of-type(1){
+                            width:20%;
+                        }
+                        &:nth-of-type(2){
+                            width:60%;
+                            text-align:left;
+                        }
+                        &:nth-of-type(3){
+                            width:20%;
+                            padding-right:@p10;
+                        }
+                    }
+                    .ivu-progress-bg{
+                        background:@base;
+                    }
+                    .ivu-progress-show-info{
+                        .ivu-progress-outer{
+                            padding-right:105px;
+                            margin-right:-105px;
+                        }
+                    }
+                    .ivu-progress-text{
+                        font-size:@fs14;
+                        .num{
+                            color:@base;
+                            font-size:@fs16;
+                            margin-right:@p5;
+                            font-weight: 400;
+                        }
+                    }
+                }
+                .title{
+                    .span{
+                        &:nth-of-type(2){
+                            text-align:center;
+                        }
+                    }
+                }
+            }
+        }
+        //合同详情
+        .contractDeta{
+            padding:@p20;
+            .contractList{
+                float:left;
+                padding:0px @p30;
+                width:260px;
+                overflow:auto;
+                &::-webkit-scrollbar {/*滚动条整体样式*/
+                    width: 14px;     /*高宽分别对应横竖滚动条的尺寸*/
+                    height: 4px;
+                }
+                &::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+                    border-radius: 3px;
+                    background: @base;
+                }
+                &::-webkit-scrollbar-track {/*滚动条里面轨道*/
+                    border-radius: 3px;
+                    background: rgba(238,241,242,1);
+                }
+                p{
+                    color:@black_2;
+                    font-weight:lighter;
+                    text-align:center;
+                    display:block;
+                    margin-bottom:@p10;
+                    img{
+                        width:200px;
+                        border-radius:@r4;
+                        border:2px solid @line;
+                        margin-bottom:@p5;
+                        height:200px;
+                        cursor:pointer;
+                    }
+                    .showImg{
+                        border-color:@base;
+                    }
+                }
+            }
+             .pdfContract{
+                margin-left:320px;
+                overflow: auto;
+                border:1px solid @baseboard;
+             }
+            .contract{
+
+
+                border-radius:@r4;
+                text-align:center;
+
+                padding:@p10;
+                img{
+                    max-width:90%;
+                }
+                &::-webkit-scrollbar {/*滚动条整体样式*/
+                    width: 14px;     /*高宽分别对应横竖滚动条的尺寸*/
+                    height: 14px;
+                }
+                &::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+                    border-radius: 0px;
+                    background: @base;
+                }
+                &::-webkit-scrollbar-track {/*滚动条里面轨道*/
+                    border-radius: 0px;
+                    background: rgba(238,241,242,1);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,179 @@
+/*看不懂以前的样式 也不想改 还是自己写样式吧*/
+// 公司合作 页面的表格公共样式
+.bidListShit,.comInviteListShit,.coopCorListShit,.new-cooperative-company{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  .tableHeade{
+    display: flex;
+    justify-content: space-between;
+    color: #bdbdbd;
+    height: 46px;
+    line-height: 46px;
+    font-weight: lighter;
+    background-color: #fdfdfd;
+    border-bottom: 1px solid #efefef;
+    margin-bottom: 0;
+    font-size: 14px;
+    span{
+      flex: 1;
+      text-align: center;
+      &:first-child{
+        text-align: left;
+        padding-left: 20px;
+        flex: 1;
+      }
+      &:last-child{
+        text-align: right;
+        padding-right: 20px;
+      }
+    }
+  }
+  dl {overflow: auto;height: 100%}
+  dd {
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #f3f3f3;
+      background: #fff;
+      margin: 0;
+      color: @black_2;
+      font-size: 13px;
+      font-family: @ff;
+      font-weight: lighter;
+      //padding: 0 10px;
+      height: 60px;
+      line-height: 60px;
+      overflow: hidden;
+      span{
+        flex: 1;
+        text-align: center;
+        &:first-child{
+          text-align: left;
+          padding-left: 20px;
+          flex: 1;
+        }
+        &:last-child{
+          text-align: right;
+          padding-right: 20px;
+        }
+      }
+      i, em {
+        font-style: normal;
+      }
+
+  }
+}
+.bidListShit{
+  dl{
+    dd{
+      .succseSty{color: @base}
+      .failSty{color: @red}
+      .remindSty{color: @orange}
+    }
+  }
+  .ivu-icon-clipboard{
+    font-size: 18px;
+    &:hover{
+      cursor: pointer;
+      color: @base;
+    }
+  }
+  .icon-shanchu{
+    &:hover{
+      cursor: pointer;
+      color: @red;
+    }
+  }
+  .pay{
+    background: #3bceb6;
+    color: #fff;
+    padding: 0 10px;
+    border-radius: 3px;
+  }
+  .goPay{
+    float: right;
+    margin: 14px 0 0 10px;
+    width: 50px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    font-style: normal;
+    padding: 0;
+    background: #17ceb1;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 13px;
+    &:hover{
+      background: #35ab93;
+      cursor: pointer;
+    }
+  }
+}
+.coopCorListShit{
+  .ivu-icon-edit{
+    font-size: 15px;
+    margin-right: 5px;
+    &:hover{
+      cursor: pointer;
+      color: @base;
+    }
+  }
+  .icon-shanchu{
+    &:hover{
+      cursor: pointer;
+      color: @red;
+    }
+  }
+}
+.comInviteListShit,.new-cooperative-company{
+  .ivu-icon-clipboard{
+    font-size: 18px;
+    &:hover{
+      cursor: pointer;
+      color: @base;
+    }
+  }
+  .add,.ignore{
+    cursor: pointer;
+    // color: @base;
+  }
+  .add{
+    &:hover{
+      color: @base;
+    }
+  }
+  .ignore{
+    &:hover{
+      color: red;
+    }
+  }
+}
+// 新合作公司列表样式 
+.new-cooperative-company{
+  .new-cooperative-dl{
+    dd {
+      span{
+        &:first-child{
+          flex: 2;
+          padding-left: 0px;
+        }
+        &:last-child{
+          padding-right: 0px;
+        }
+      }
+    }
+  }
+  .tableHeade{
+    span{
+      &:first-child{
+        flex: 2;
+        padding-left: 0px;
+      }
+      &:last-child{
+        padding-right: 0px;
+      }
+    }
+  }
+}

@@ -1,0 +1,103 @@
+.modal-backdrop {
+    position: absolute;
+    top: -54px;
+    right: 0;
+    bottom: 0;
+    padding: 300px 0 100px;
+    left: 0;
+    /* background-color: rgba(0, 0, 0, .3); */    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999 !important;
+    overflow-y: scroll;
+}
+.ivu-layout{
+    background: #fff !important;
+}
+.ivu-tabs-ink-bar{
+    z-index: 0 !important;
+}
+.modal {
+    background-color: #fff;
+    box-shadow: 2px 2px 20px 1px;
+    /* overflow-x: auto; */
+    display: flex;
+    flex-direction: column;
+    width: 1300px;
+}
+.modal-header {
+    position: relative;
+    float: right;
+    width:120px;
+    padding: 0px 0px 0px 0px;
+}
+.modal-footer {
+    border-top: 1px solid #eee;
+    justify-content: flex-end;
+}
+.modal-body {
+    position: relative;
+    padding: 0px 0px;
+}
+.btn-close {
+    border: none 0;
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #666;
+    background-color: transparent;
+    margin: -20px 40px;
+}
+.btn-green {
+    margin-left: 10px;
+}
+.modal-fade-enter, .modal-fade-leave-active {
+    opacity: 0;
+}
+.modal-fade-enter-active, .modal-fade-leave-active {
+    transition: opacity .5s ease
+}
+.car-bg {
+    background: #00a854;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+}
+/*上传图片*/
+.demo-upload-list {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #fff;
+    position: relative;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+    margin-right: 4px;
+}
+.demo-upload-list img {
+    width: 100%;
+    height: 100%;
+}
+.demo-upload-list-cover {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, .6);
+}
+.demo-upload-list:hover .demo-upload-list-cover {
+    display: block;
+}
+.demo-upload-list-cover i {
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 0 2px;
+}

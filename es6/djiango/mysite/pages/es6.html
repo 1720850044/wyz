@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // function f(x, y) {
+    //   return {x,y};
+    // }
+    //
+    // console.log(f(1, 2))
+    / //任务里组长（功能）
+    'api/workbench/page/my-task/get-cost'                => 'project/page/task/get-cost',//获取成本
+    'api/workbench/page/my-task/edit-cost'               => 'project/page/task/edit-cost',//修改成本
+    'api/workbench/page/my-task/user-working-time'       => 'project/page/task/user-working-time', //成员工作时间
+    'api/workbench/page/my-task/edit-user-working-time'  => 'project/page/task/edit-user-working-time',//成员工时修改
+    'api/workbench/page/my-task/inside-audit'            => 'project/page/task/inside-audit',
+
+/**
+     * 经理工作台
+     */
+    'api/workbench/page/work-project/index'                 => 'workbench/page/work-project/index',         //初始化
+    'api/workbench/page/work-project/headman-wp'            => 'workbench/page/work-project/headman-wp',    //项目工作台数据
+    'api/workbench/page/work-project/audit-list'            => 'workbench/page/work-project/audit-list',    //审核列表
+
+    /**
+     * 项目任务列表
+     */
+    'api/project/project-task-list/index'                   => 'project/page/task-project/index',
+    'api/project/project-task-list/child-list'              => 'project/page/task-project/child-list', //子项目
+    'api/project/project-task-list/task-list'               => 'project/component/project/task-list', //任务列表
+    'api/project/project-task-list/project-info'            => 'project/component/project/project-info', //项目详情
+    'api/project/project-task-list/page'                    => 'company/component/project/page',    //项目分页查询（用于甘特图部分）
+    'api/project/project-task-list/task-count'              => 'project/page/task-project/task-count', //任务统计
+    'api/project/project-task-list/get-tasktype-task-count' => 'project/page/task-project/get-tasktype-task-count', //当前项目任务规范统计
+    'api/project/project-task-list/task-progress-chart'     => 'project/page/task-project/task-progress-chart',//甘特图部分
+    'api/project/project-task-list/project-progress'        => 'project/page/task-project/project-progress', //项目进度
+    'api/project/project-task-list/child-project-progress'  => 'project/page/task-project/child-project-progress',
+    'api/project/project-task-list/member-progress'         => 'project/page/task-project/member-progress',
+    'api/project/project-task-list/tags-list'               => 'company/component/tags/tags-list',
+
+    'api/project/project-task-list/member-task-schedule'    => 'company/component/task-schedule/member-task-schedule',
+    'api/project/project-task-list/contract-price-task'     => 'company/component/task-schedule/contract-price-task',
+    'api/project/project-task-list/joined-members'          => 'project/component/project/joined-memberst',
+    'api/project/project-task-list/type-list'               => 'project/component/project/type-list',
+    'api/project/project-task-list/member-list'             => 'project/component/project/member-list',
+    'api/project/project-task-list/date-list'               => 'company/component/date/list',
+    'api/project/project-task-list/task-add'                => 'project/page/task-project/add',
+
+    /**
+     * 项目资源
+     */
+    'api/project/project-resource/index'                    => 'project/page/project-resource/index',
+    'api/project/project-resource/page'                     => 'project/page/project-resource/page',
+    'api/project/project-resource/task-tasktype-count'      => 'project/page/project-resource/task-tasktype-count',
+    'api/project/project-resource/project-info'             => 'project/page/project-resource/project-info',
+    'api/project/project-resource/stage-page'               => 'project/page/project-resource/stage-page',
+
+project/page/excel/export-project-task  => api/project/project-task-list/expire-excel 批量任务导出
+
+'api/project/project-task-list/get-group-price-list'    => 'project/page/task-project/get-group-price-list',//合同清单列表
+    'api/project/project-task-list/cate-list'               => 'project/component/project/cate-list',//创建方式列表
+    'api/project/project-task-list/member-list'             => 'project/component/project/member-list',//成员列表
+    'api/project/project-task-list/type-list'               => 'project/component/project/type-list',//任务类型列表
+    'api/project/project-task-list/contract-price-add-task' => 'project/page/task-project/contract-price-add-task',
+
+'api/project/project-task-list/project-info'            => 'project/component/project/project-info', //项目详情
+
+'api/project/project-resource/project-info'             => 'project/page/project-resource/project-info',
+
+ 'api/project/project-task-list/child-add'               => 'project/page/task-project/child-add', //子项目新增
+    'api/project/project-task-list/child-update'            => 'project/page/task-project/child-update', //子项目修改
+    'api/project/project-task-list/child-delete'            => 'project/page/task-project/child-delete', //子项目删除
+
+       'api/project/project-resource/count'                    => 'project/page/project-resource/count',
+        'api/project/project-resource/task-tasktype-count'      => 'project/page/project-resource/task-tasktype-count',
+         'api/project/project-resource/task-tasktype-count'      => 'project/page/project-resource/task-tasktype-count',
+
+
+        //任务里组长（功能）
+    'api/workbench/page/my-task/get-cost'                => 'project/page/task/get-cost',//获取成本
+    'api/workbench/page/my-task/edit-cost'               => 'project/page/task/edit-cost',//修改成本
+    'api/workbench/page/my-task/user-working-time'       => 'project/page/task/user-working-time', //成员工作时间
+    'api/workbench/page/my-task/edit-user-working-time'  => 'project/page/task/edit-user-working-time',//成员工时修改
+    'api/workbench/page/my-task/inside-audit'            => 'project/page/task/inside-audit',
+    'api/workbench/page/my-task/task-delete'             => 'project/page/task/delete', //任务删除
+    'api/workbench/page/my-task/child-task-add'          => 'project/page/task/add',   //子任务添加
+    'api/workbench/page/my-task/task-update'             => 'project/page/task/update', //任务修改
+
+     'api/workbench/page/my-task/task-pause'              => 'project/page/task/pause', //任务暂停
+    'api/workbench/page/my-task/task-continue'           => 'project/component/task/continue', //任务继续
+
+    project/project-resource/stage-pack     => project/page/task-download/stage-pack 阶段资源下载（可以打包多个）
+    workbench/page/my-task/download         => project/page/task/download 任务详情内的资源下载
+project/project-resource/task-pack      => project/page/task/pack 打包下载
+       'api/system/auth/menu'                                  => 'system/auth/menu2',
+        serve -s dist/  ll -a
+
+</script>
+</body>
+</html>

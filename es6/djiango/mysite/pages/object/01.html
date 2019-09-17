@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    console.log(Object.assign(2))
+    console.log(typeof Object.assign(2))
+    console.log(typeof Number(2))
+    var obj = {
+        a: 'a',
+        b: 'b',
+        c: {
+            d: 'd'
+        }
+    }
+    var obj2 = clone(obj);
+    obj.c.d = 1;
+    console.log(obj2,obj);
+    function clone(origin) {
+      return Object.assign({}, origin);
+    }
+    // const obj1 = {a: {b: 1}};
+    // const obj2 = Object.assign({}, obj1);
+
+    // obj1.a.b = 2;
+    // console.log();
+    // obj2.a.b // 2
+</script>
+</body>
+</html>

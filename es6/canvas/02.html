@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         .tab{
+            width: 150px;
+            height: 50px;
+            display: block;
+            visibility: visible;
+            font-size: 12px;
+            line-height: 1.5;
+            position: absolute;
+            z-index: 1060;
+         } 
+         .aft{
+            left: 50%;
+            margin-left: -7px;
+            bottom: 3px;
+            border-width: 7px 7px 0;
+            border-top-color: hsla(0,0%,85%,.5);
+         }  
+         .aft::after{
+            display: block;
+            width: 0;
+            height: 0;
+            position: absolute;
+            border-color: transparent;
+            border-style: solid;
+         }
+    </style>
+</head>
+<body>
+    
+    <div class="tab">
+        <div class="aft"></div>
+    </div>
+</body>
+</html>

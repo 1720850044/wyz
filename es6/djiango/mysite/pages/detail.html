@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="box">英雄信息{{books.btitle}}</h1>
+    <ul>
+        {% for hero in heros %}
+            <li>{{hero.hname}}-----{{hero.hcomment}}</li>
+        {% empty %}
+            <li>没有英雄</li>
+        {% endfor%}
+    </ul>
+<script>
+    function getId(o){
+        return document.getElementById(o);
+    }
+
+    function bgColor(){
+        Element.prototype.bgColor = function () {
+            this.style.backgroundColor = 'red';
+        }
+
+    }
+    // console.log(getId('box'))
+    // getId('box').bgColor();
+    // function a(xx){
+    //     this.x=xx;
+    //     return this
+    // };
+    // var x=a(5);
+    // var y=a(6);
+    // console.log(x.x);
+    // console.log(y.x);
+    // var length = 10;
+    // function fn() {
+    //     console.log(this.length);
+    // }
+    //
+    // var obj = {
+    //   length: 5,
+    //   method: function(fn) {
+    //     fn();
+    //     arguments[0]();
+    //   }
+    // };
+    // obj.method(fn, 1);
+
+    // var x = 3;
+    // var y = 4;
+    // var obj = {
+    //     x: 1,
+    //     y: 6,
+    //     getX: function() {
+    //         var x =5;
+    //         return function() {
+    //             return this.x;
+    //         }();
+    //     },
+    //     getY: function() {
+    //         var y =7;
+    //          return this.y;
+    //     }
+    // }
+    // console.log(obj.getX())//3
+    // console.log(obj.getY())//6
+</script>
+</body>
+</html>
