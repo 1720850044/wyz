@@ -31,10 +31,52 @@
 </template>
 
 <script>
+// import { test,test1 } from '../tools';
+import * as tools from '../tools';
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  methods: {
+
+  },
+  mounted () {
+    // console.log(tools)
+    // function taskA() {
+    //     console.log("Task A");
+    // }
+    // function taskB() {
+    //     console.log("Task B");
+    // }
+    // function onRejected(error) {
+    //     console.log("Catch Error: A or B", error);
+    // }
+
+    // var promise = Promise.resolve();
+    // promise
+    //     .then(taskA)
+    //     .then(taskB)
+    //     .catch(onRejected)
+    //     // console.log(test());
+    //     // console.log(test1());
+    //   }
+    var obj = { 'name': '早上','age':18 };
+    var loggedObj = new Proxy(obj, {
+      get(target, name) {
+        console.log('get', target, name);
+        return Reflect.get(target, name);
+      },
+      deleteProperty(target, name) {
+        console.log('delete' + name);
+        return Reflect.deleteProperty(target, name);
+      },
+      has(target, name) {
+        console.log('has' + name);
+        return Reflect.has(target, name);
+      }
+    });
+    console.log(Reflect.get(obj,'age'));
   }
 }
 </script>
